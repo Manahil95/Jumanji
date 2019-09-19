@@ -15,24 +15,7 @@ public class MazeScript : MonoBehaviour
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray,out hit))
-        {
-            if (hit.collider.tag=="Walk")
-            {
-                Debug.Log(gameObject.name);
-                transform.position += new Vector3(transform.position.x * Speed, 0, 0);
-            }
-            if (hit.collider.tag == "MoveRight")
-            {
-
-            }
-            if (hit.collider.tag == "MoveLeft")
-            {
-
-            }
-        }
+        
     }
     private void OnMouseOver()
     {
@@ -40,7 +23,15 @@ public class MazeScript : MonoBehaviour
         {
             if (gameObject.tag=="Walk")
             {
-                transform.position = transform.forward * Speed;
+                transform.position += new Vector3(transform.position.x * Speed, 0, 0);
+            }
+            if (gameObject.tag == "MoveRight")
+            {
+
+            }
+            if (gameObject.tag == "MoveLeft")
+            {
+
             }
         }
     }
