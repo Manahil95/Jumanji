@@ -4,32 +4,45 @@ using UnityEngine;
 
 public class MazeScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+    private float Speed = 3f;
+
     void Start()
     {
-        RaycastHit hit;
+        
+    }
+
+
+    void Update()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray,out hit))
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit))
         {
-            if(hit.transform.name == "MoveRight")
+            if (hit.collider.tag=="Walk")
+            {
+                Debug.Log(gameObject.name);
+                transform.position += new Vector3(transform.position.x * Speed, 0, 0);
+            }
+            if (hit.collider.tag == "MoveRight")
             {
 
             }
-            if (hit.transform.name == "MoveLeft")
-            {
-
-            }
-            if (hit.transform.name == "Walk")
+            if (hit.collider.tag == "MoveLeft")
             {
 
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnMouseOver()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (gameObject.tag=="Walk")
+            {
+                transform.position = transform.forward * Speed;
+            }
+        }
     }
+
 }
