@@ -135,6 +135,7 @@ public class OVRGrabbable : MonoBehaviour
         {
             rb.isKinematic = true;
             transform.position = hangerPosition.position;
+            transform.rotation = Quaternion.identity;
         }
     }
 
@@ -169,13 +170,22 @@ public class OVRGrabbable : MonoBehaviour
     }
 
     bool inPlace;
-    Transform hangerPosition;
+    public Transform hangerPosition;
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "HangerPositionPlace")
+        if(other.tag == "HangerPositioPlace")
         {
             hangerPosition = other.transform;
             inPlace = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "HangerPositioPlace")
+        {
+            hangerPosition = null;
+            inPlace = false;
         }
     }
 }
