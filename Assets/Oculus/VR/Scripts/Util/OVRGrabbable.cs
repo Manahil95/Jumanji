@@ -170,7 +170,7 @@ public class OVRGrabbable : MonoBehaviour
     }
 
     bool inPlace;
-    public Transform hangerPosition;
+    Transform hangerPosition;
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "HangerPositioPlace")
