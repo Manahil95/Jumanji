@@ -193,6 +193,7 @@ public class OVRGrabbable : MonoBehaviour
                 inPlace = true;
             }
         }
+
         if (myType == Type.Rope)
         {
             if (other.tag == "Rope")
@@ -201,15 +202,13 @@ public class OVRGrabbable : MonoBehaviour
                 inPlace = true;
             }
         }
+
         if (myType == Type.Bottle)
         {
             if (other.tag == "Bottle")
-            {
-                if (hangerPosition == null)
-                {
-                    hangerPosition = other.transform;
-                    inPlace = true;
-                }
+            { 
+                hangerPosition = other.transform;
+                inPlace = true;
             }
         }
 
