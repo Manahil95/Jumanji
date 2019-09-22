@@ -131,12 +131,13 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = null;
         m_grabbedCollider = null;
 
-        if (inPlace)
-        {
-            rb.isKinematic = true;
-            transform.position = hangerPosition.position;
-            transform.rotation = Quaternion.identity;
-        }
+
+            if (inPlace)
+            {
+                rb.isKinematic = true;
+                transform.position = hangerPosition.position;
+                transform.rotation = Quaternion.identity;
+            }
     }
 
     void Awake()
@@ -177,13 +178,16 @@ public class OVRGrabbable : MonoBehaviour
     }
 
     public Type myType;
+
     bool inPlace;
+
     Transform hangerPosition;
+
     private void OnTriggerStay(Collider other)
     {
         if (myType == Type.Hanger)
         {
-            if (other.tag == "Bottle")
+            if (other.tag == "HangerPositioPlace")
             {
                 hangerPosition = other.transform;
                 inPlace = true;
@@ -201,8 +205,11 @@ public class OVRGrabbable : MonoBehaviour
         {
             if (other.tag == "Bottle")
             {
-                hangerPosition = other.transform;
-                inPlace = true;
+                if (hangerPosition == null)
+                {
+                    hangerPosition = other.transform;
+                    inPlace = true;
+                }
             }
         }
 
@@ -228,7 +235,7 @@ public class OVRGrabbable : MonoBehaviour
         }
         if (myType == Type.Bottle)
         {
-            if (other.tag == "HangerPositioPlace")
+            if (other.tag == "Bottle")
             {
                 hangerPosition = null;
                 inPlace = false;
