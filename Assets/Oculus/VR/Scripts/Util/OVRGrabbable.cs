@@ -169,23 +169,70 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
+    public enum Type
+    {
+        Rope,
+        Hanger,
+        Bottle
+    }
+
+    public Type myType;
     bool inPlace;
     Transform hangerPosition;
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "HangerPositioPlace")
+        if (myType == Type.Hanger)
         {
-            hangerPosition = other.transform;
-            inPlace = true;
+            if (other.tag == "Bottle")
+            {
+                hangerPosition = other.transform;
+                inPlace = true;
+            }
         }
+        if (myType == Type.Rope)
+        {
+            if (other.tag == "Rope")
+            {
+                hangerPosition = other.transform;
+                inPlace = true;
+            }
+        }
+        if (myType == Type.Bottle)
+        {
+            if (other.tag == "Bottle")
+            {
+                hangerPosition = other.transform;
+                inPlace = true;
+            }
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "HangerPositioPlace")
+        if (myType == Type.Hanger)
         {
-            hangerPosition = null;
-            inPlace = false;
+            if (other.tag == "HangerPositioPlace")
+            {
+                hangerPosition = null;
+                inPlace = false;
+            }
+        }
+        if (myType == Type.Rope)
+        {
+            if (other.tag == "Rope")
+            {
+                hangerPosition = null;
+                inPlace = false;
+            }
+        }
+        if (myType == Type.Bottle)
+        {
+            if (other.tag == "HangerPositioPlace")
+            {
+                hangerPosition = null;
+                inPlace = false;
+            }
         }
     }
 }
