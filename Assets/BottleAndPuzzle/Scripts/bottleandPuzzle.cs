@@ -8,7 +8,7 @@ public class bottleandPuzzle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Hanger")
+        if(other.gameObject.tag == "Hanger")
         {
             other.transform.position = hangerPosition.position;
         }

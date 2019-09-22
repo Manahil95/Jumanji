@@ -130,6 +130,12 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+
+        if (inPlace)
+        {
+            rb.isKinematic = true;
+            transform.position = hangerPosition.position;
+        }
     }
 
     void Awake()
@@ -159,6 +165,17 @@ public class OVRGrabbable : MonoBehaviour
         {
             // Notify the hand to release destroyed grabbables
             m_grabbedBy.ForceRelease(this);
+        }
+    }
+
+    bool inPlace;
+    Transform hangerPosition;
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "HangerPositionPlace")
+        {
+            hangerPosition = other.transform;
+            inPlace = true;
         }
     }
 }
