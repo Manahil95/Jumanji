@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class MazeMoveScript : MonoBehaviour
 {
-    
-    private float Speed = 0.3f;
-    public GameObject Enemy;
-    
-    
+    public GameObject Avatar;
 
     void Start()
     {
@@ -20,28 +16,32 @@ public class MazeMoveScript : MonoBehaviour
         
     }
 
-    private void OnMouseOver()
+    private void Move()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (gameObject.tag == "Walk")
         {
-
-            if (gameObject.tag == "Walk")
-            {
-                Enemy.transform.position += Enemy.transform.TransformDirection(Vector3.forward);
-            }
-            if (gameObject.tag == "WalkBack")
-            {
-                Enemy.transform.position += Enemy.transform.TransformDirection(Vector3.back);
-            }
-            if (gameObject.tag == "MoveRight")
-            {
-                Enemy.transform.position += Enemy.transform.TransformDirection(Vector3.right);
-            }
-            if (gameObject.tag == "MoveLeft")
-            {
-                Enemy.transform.position += Enemy.transform.TransformDirection(Vector3.left);
-            }
+            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 6);
         }
+        if (gameObject.tag == "WalkBack")
+        {
+            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 6);
+        }
+        if (gameObject.tag == "MoveRight")
+        {
+            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime * 6);
+        }
+        if (gameObject.tag == "MoveLeft")
+        {
+            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 6);
+        }
+    }
+    private void OnMouseUp()
+    {
+        CancelInvoke();
+    }
+    private void OnMouseDown()
+    {
+        InvokeRepeating("Move", 0, Time.deltaTime);
     }
 }
 
