@@ -7,6 +7,12 @@ TagManager:
   - Fire
   - Rotater
   - Wall
+  - winPoint
+  - Bottle
+  - Rope
+  - Hanger
+  - Hanger Place
+  - HangerPositioPlace
   layers:
   - Default
   - TransparentFX
