@@ -78,6 +78,20 @@ public class CaveGenerator : MonoBehaviour
                 }
             }
         }
+
+        List<List<Coord>> roomRegions = GetRegions(0);
+        int roomThresholdSize = 50;
+
+        foreach (List<Coord> roomRegion in roomRegions)
+        {
+            if (roomRegion.Count < roomThresholdSize)
+            {
+                foreach (Coord tile in roomRegion)
+                {
+                    map[tile.tileX, tile.tileY] = 1;
+                }
+            }
+        }
     }
 
     List<List<Coord>> GetRegions(int tileType)
