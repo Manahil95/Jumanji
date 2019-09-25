@@ -196,7 +196,7 @@ public class OVRGrabbable : MonoBehaviour
 
         if (myType == Type.Rope)
         {
-            if (other.tag == "Rope")
+            if (other.tag == "Hanger")
             {
                 hangerPosition = other.transform;
                 inPlace = true;
@@ -205,7 +205,7 @@ public class OVRGrabbable : MonoBehaviour
 
         if (myType == Type.Bottle)
         {
-            if (other.tag == "Bottle")
+            if (other.tag == "Rope")
             { 
                 hangerPosition = other.transform;
                 inPlace = true;
@@ -226,7 +226,7 @@ public class OVRGrabbable : MonoBehaviour
         }
         if (myType == Type.Rope)
         {
-            if (other.tag == "Rope")
+            if (other.tag == "Hanger")
             {
                 hangerPosition = null;
                 inPlace = false;
@@ -234,7 +234,7 @@ public class OVRGrabbable : MonoBehaviour
         }
         if (myType == Type.Bottle)
         {
-            if (other.tag == "Bottle")
+            if (other.tag == "Rope")
             {
                 hangerPosition = null;
                 inPlace = false;
