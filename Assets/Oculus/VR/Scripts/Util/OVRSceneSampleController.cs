@@ -176,15 +176,14 @@ public class OVRSceneSampleController : MonoBehaviour
         float moveScaleMultiplier = 0.0f;
         playerController.GetMoveScaleMultiplier(ref moveScaleMultiplier);
 
-        // movement from gear 
-        //if (Input.GetKeyDown(KeyCode.Alpha7))
-        //{
-        //    moveScaleMultiplier -= speedRotationIncrement;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha8))
-        //{
-        //    moveScaleMultiplier += speedRotationIncrement;
-        //}
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            moveScaleMultiplier -= speedRotationIncrement;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            moveScaleMultiplier += speedRotationIncrement;
+        }
 
         playerController.SetMoveScaleMultiplier(moveScaleMultiplier);
 

@@ -140,7 +140,7 @@ public class OVRGrabbable : MonoBehaviour
         }
         else
         {
-            transform.position = originalPos.position;
+            // transform.position = originalPos.position;
         }
     }
 
@@ -196,13 +196,17 @@ public class OVRGrabbable : MonoBehaviour
         {
             if (other.tag == "HangerPositioPlace")
             {
-                Collider[] overlappedColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.identity);
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
                 foreach (var item in overlappedColliders)
                 {
-                    if (item.tag == "Hanger")
-                        return;
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Hanger")
+                            return;
+                    }
                 }
-               
+
                 hangerPosition = other.transform;
                 inPlace = true;
             }
@@ -212,6 +216,17 @@ public class OVRGrabbable : MonoBehaviour
         {
             if (other.tag == "Hanger")
             {
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+                foreach (var item in overlappedColliders)
+                {
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Rope")
+                            return;
+                    }
+                }
+
                 hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
             }
@@ -221,6 +236,17 @@ public class OVRGrabbable : MonoBehaviour
         {
             if (other.tag == "Rope")
             {
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+                foreach (var item in overlappedColliders)
+                {
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Bottle")
+                            return;
+                    }
+                }
+
                 hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
             }
@@ -253,6 +279,48 @@ public class OVRGrabbable : MonoBehaviour
                 hangerPosition = null;
                 inPlace = false;
             }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
+    }
+
+
+    private void Update()
+    {
+        float speed = 5f;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A key was pressed.");
+            transform.position += -transform.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W key was pressed.");
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("S key was pressed.");
+            transform.position += -transform.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += transform.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            transform.position += transform.up * speed * Time.deltaTime;
+            //transform.position = new Vector3(transform.position.x, 5f , transform.position.z);//transform.position.y * speed * Time.deltaTime
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            transform.position = -transform.up * speed * Time.deltaTime;
         }
     }
 }
