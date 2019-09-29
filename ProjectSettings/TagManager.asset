@@ -13,6 +13,7 @@ TagManager:
   - Hanger
   - Hanger Place
   - HangerPositioPlace
+  - hand
   layers:
   - Default
   - TransparentFX
