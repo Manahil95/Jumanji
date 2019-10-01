@@ -49,7 +49,7 @@ public class PlayerController : SocialPlatformManager
                 Rooms.LaunchInvitableUserFlow(roomManager.roomID);
             }
 
-            // Toggle Camera
+            //Toggle Camera
             if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad))
             {
                 ToggleCamera();
@@ -77,7 +77,7 @@ public class PlayerController : SocialPlatformManager
                 ToggleCamera();
             }
 
-            // Toggle Help UI
+            //Toggle Help UI
             if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick))
             {
                 ToggleUI();

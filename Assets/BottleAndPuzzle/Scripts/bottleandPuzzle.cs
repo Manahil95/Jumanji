@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class bottleandPuzzle : MonoBehaviour
 {
-    [SerializeField] Transform hangerPosition;
+   // [SerializeField] Transform hangerPosition;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Hanger")
         {
-            other.transform.position = hangerPosition.position;
+            //other.transform.position = hangerPosition.position;
         }
     }
 

@@ -37,92 +37,92 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
-	/// <summary>
-	/// If true, the object can currently be grabbed.
-	/// </summary>
+    /// <summary>
+    /// If true, the object can currently be grabbed.
+    /// </summary>
     public bool allowOffhandGrab
     {
         get { return m_allowOffhandGrab; }
     }
 
-	/// <summary>
-	/// If true, the object is currently grabbed.
-	/// </summary>
+    /// <summary>
+    /// If true, the object is currently grabbed.
+    /// </summary>
     public bool isGrabbed
     {
         get { return m_grabbedBy != null; }
     }
 
-	/// <summary>
-	/// If true, the object's position will snap to match snapOffset when grabbed.
-	/// </summary>
+    /// <summary>
+    /// If true, the object's position will snap to match snapOffset when grabbed.
+    /// </summary>
     public bool snapPosition
     {
         get { return m_snapPosition; }
     }
 
-	/// <summary>
-	/// If true, the object's orientation will snap to match snapOffset when grabbed.
-	/// </summary>
+    /// <summary>
+    /// If true, the object's orientation will snap to match snapOffset when grabbed.
+    /// </summary>
     public bool snapOrientation
     {
         get { return m_snapOrientation; }
     }
 
-	/// <summary>
-	/// An offset relative to the OVRGrabber where this object can snap when grabbed.
-	/// </summary>
+    /// <summary>
+    /// An offset relative to the OVRGrabber where this object can snap when grabbed.
+    /// </summary>
     public Transform snapOffset
     {
         get { return m_snapOffset; }
     }
 
-	/// <summary>
-	/// Returns the OVRGrabber currently grabbing this object.
-	/// </summary>
+    /// <summary>
+    /// Returns the OVRGrabber currently grabbing this object.
+    /// </summary>
     public OVRGrabber grabbedBy
     {
         get { return m_grabbedBy; }
     }
 
-	/// <summary>
-	/// The transform at which this object was grabbed.
-	/// </summary>
+    /// <summary>
+    /// The transform at which this object was grabbed.
+    /// </summary>
     public Transform grabbedTransform
     {
         get { return m_grabbedCollider.transform; }
     }
 
-	/// <summary>
-	/// The Rigidbody of the collider that was used to grab this object.
-	/// </summary>
+    /// <summary>
+    /// The Rigidbody of the collider that was used to grab this object.
+    /// </summary>
     public Rigidbody grabbedRigidbody
     {
         get { return m_grabbedCollider.attachedRigidbody; }
     }
 
-	/// <summary>
-	/// The contact point(s) where the object was grabbed.
-	/// </summary>
+    /// <summary>
+    /// The contact point(s) where the object was grabbed.
+    /// </summary>
     public Collider[] grabPoints
     {
         get { return m_grabPoints; }
     }
 
-	/// <summary>
-	/// Notifies the object that it has been grabbed.
-	/// </summary>
-	virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
+    /// <summary>
+    /// Notifies the object that it has been grabbed.
+    /// </summary>
+    virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
-	/// <summary>
-	/// Notifies the object that it has been released.
-	/// </summary>
-	virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
+    /// <summary>
+    /// Notifies the object that it has been released.
+    /// </summary>
+    virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = m_grabbedKinematic;
@@ -132,12 +132,16 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = null;
 
 
-            if (inPlace)
-            {
-                rb.isKinematic = true;
-                transform.position = hangerPosition.position;
-                transform.rotation = Quaternion.identity;
-            }
+        if (inPlace)
+        {
+            rb.isKinematic = true;
+            transform.position = hangerPosition.position;
+            transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            // transform.position = originalPos.position;
+        }
     }
 
     void Awake()
@@ -148,7 +152,7 @@ public class OVRGrabbable : MonoBehaviour
             Collider collider = this.GetComponent<Collider>();
             if (collider == null)
             {
-				throw new ArgumentException("Grabbables cannot have zero grab points and no collider -- please add a grab point or collider.");
+                throw new ArgumentException("Grabbables cannot have zero grab points and no collider -- please add a grab point or collider.");
             }
 
             // Create a default grab point
@@ -182,6 +186,9 @@ public class OVRGrabbable : MonoBehaviour
     bool inPlace;
 
     Transform hangerPosition;
+    Transform originalPos;
+
+    public Transform hangingPosition;
 
     private void OnTriggerStay(Collider other)
     {
@@ -189,6 +196,17 @@ public class OVRGrabbable : MonoBehaviour
         {
             if (other.tag == "HangerPositioPlace")
             {
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+                foreach (var item in overlappedColliders)
+                {
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Hanger")
+                            return;
+                    }
+                }
+
                 hangerPosition = other.transform;
                 inPlace = true;
             }
@@ -196,18 +214,40 @@ public class OVRGrabbable : MonoBehaviour
 
         if (myType == Type.Rope)
         {
-            if (other.tag == "Rope")
+            if (other.tag == "Hanger")
             {
-                hangerPosition = other.transform;
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+                foreach (var item in overlappedColliders)
+                {
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Rope")
+                            return;
+                    }
+                }
+
+                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
             }
         }
 
         if (myType == Type.Bottle)
         {
-            if (other.tag == "Bottle")
-            { 
-                hangerPosition = other.transform;
+            if (other.tag == "Rope")
+            {
+                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+                foreach (var item in overlappedColliders)
+                {
+                    if (item != GetComponent<Collider>())
+                    {
+                        if (item.tag == "Bottle")
+                            return;
+                    }
+                }
+
+                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
             }
         }
@@ -226,7 +266,7 @@ public class OVRGrabbable : MonoBehaviour
         }
         if (myType == Type.Rope)
         {
-            if (other.tag == "Rope")
+            if (other.tag == "Hanger")
             {
                 hangerPosition = null;
                 inPlace = false;
@@ -234,11 +274,53 @@ public class OVRGrabbable : MonoBehaviour
         }
         if (myType == Type.Bottle)
         {
-            if (other.tag == "Bottle")
+            if (other.tag == "Rope")
             {
                 hangerPosition = null;
                 inPlace = false;
             }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
+    }
+
+
+    private void Update()
+    {
+        float speed = 5f;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A key was pressed.");
+            transform.position += -transform.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W key was pressed.");
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("S key was pressed.");
+            transform.position += -transform.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += transform.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            transform.position += transform.up * speed * Time.deltaTime;
+            //transform.position = new Vector3(transform.position.x, 5f , transform.position.z);//transform.position.y * speed * Time.deltaTime
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            transform.position = -transform.up * speed * Time.deltaTime;
         }
     }
 }
