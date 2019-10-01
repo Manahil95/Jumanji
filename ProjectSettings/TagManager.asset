@@ -14,6 +14,14 @@ TagManager:
   - Hanger Place
   - HangerPositioPlace
   - winbottlePlace
+  - MoveRight
+  - MoveLeft
+  - Walk
+  - Enemy
+  - CloseButton
+  - WalkBack
+  - Target
+  - moveGround
   layers:
   - Default
   - TransparentFX
