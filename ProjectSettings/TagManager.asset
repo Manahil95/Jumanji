@@ -22,6 +22,9 @@ TagManager:
   - WalkBack
   - Target
   - moveGround
+  - hand
+  - LeftHand
+  - RightHand
   layers:
   - Default
   - TransparentFX
