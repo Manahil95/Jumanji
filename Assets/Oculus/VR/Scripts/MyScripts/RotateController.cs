@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RotateController : MonoBehaviour
 {
@@ -65,18 +64,23 @@ public class RotateController : MonoBehaviour
         }
     }
 
+    public Vector3 crossVec;
+    public float myYRotation;
+
     public void ActivateRotator()
     {
         if (canMove)
         {
             handCurrentPos = hands.position;
-            Vector3 crossVec = Vector3.Cross(handCurrentPos, handInitialPos);
-            if (crossVec.y > 0)
-            {
-                YRotation += Vector3.Angle(handCurrentPos, handInitialPos);
+            crossVec = Vector3.Cross(new Vector3(handInitialPos.x, 0, handInitialPos.y), new Vector3(handCurrentPos.x, 0, handCurrentPos.y));
+            //if (crossVec.y > 0)
+            //{
+                YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.y), new Vector3(handInitialPos.x, 0, handInitialPos.y));
                 targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
                 print(YRotation);
+
+            myYRotation = transform.rotation.y;
                 if (Direction)
                 {
                     if (transform.rotation.y >= currentEndRotation)
@@ -93,7 +97,7 @@ public class RotateController : MonoBehaviour
                         Invoke("StartRotationConnectors", 0);
                     }
                 }
-            }
+           // }
         }
     }
 

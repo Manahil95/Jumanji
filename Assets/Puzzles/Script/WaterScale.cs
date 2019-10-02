@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaterScale : MonoBehaviour
 {
-
     float Speed = 5f;
     Vector3 temp;
 
