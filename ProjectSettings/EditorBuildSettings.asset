@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/BottleAndPuzzle/Scenes/test Rope.unity
+    guid: 5a14b93e92807da48939798d4b580227
   m_configObjects: {}
