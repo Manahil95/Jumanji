@@ -70,24 +70,28 @@ public class RotateController : MonoBehaviour
         if (canMove)
         {
             handCurrentPos = hands.position;
-            YRotation = Vector3.Angle(handCurrentPos, handInitialPos);
-            targetRotation = Quaternion.Euler(0, YRotation * 10, 0.0f);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
-            print(YRotation);
-            if (Direction)
+            Vector3 crossVec = Vector3.Cross(handCurrentPos, handInitialPos);
+            if (crossVec.y > 0)
             {
-                if (transform.rotation.y >= currentEndRotation)
+                YRotation += Vector3.Angle(handCurrentPos, handInitialPos);
+                targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
+                print(YRotation);
+                if (Direction)
                 {
-                    canMove = false;
-                    Invoke("StartRotationConnectors", 0);
+                    if (transform.rotation.y >= currentEndRotation)
+                    {
+                        canMove = false;
+                        Invoke("StartRotationConnectors", 0);
+                    }
                 }
-            }
-            else
-            {
-                if (transform.rotation.y <= currentEndRotation)
+                else
                 {
-                    canMove = false;
-                    Invoke("StartRotationConnectors", 0);
+                    if (transform.rotation.y <= currentEndRotation)
+                    {
+                        canMove = false;
+                        Invoke("StartRotationConnectors", 0);
+                    }
                 }
             }
         }

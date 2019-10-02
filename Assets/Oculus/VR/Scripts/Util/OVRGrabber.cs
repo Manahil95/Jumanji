@@ -182,10 +182,10 @@ public class OVRGrabber : MonoBehaviour
     {
         if (other.tag == "Rotater")
         {
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
-            {
+            //if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+            //{
                 other.GetComponent<RotateController>().ActivateRotator();
-            }
+           // }
         }
     }
 
