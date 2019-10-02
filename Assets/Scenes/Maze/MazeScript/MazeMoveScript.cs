@@ -43,5 +43,7 @@ public class MazeMoveScript : MonoBehaviour
     {
         InvokeRepeating("Move", 0, Time.deltaTime);
     }
+
+    
 }
 

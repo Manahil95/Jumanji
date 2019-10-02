@@ -25,6 +25,7 @@ TagManager:
   - hand
   - LeftHand
   - RightHand
+  - MazeWall
   layers:
   - Default
   - TransparentFX

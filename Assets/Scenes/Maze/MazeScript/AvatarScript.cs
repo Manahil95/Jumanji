@@ -7,6 +7,7 @@ public class AvatarScript : MonoBehaviour
     public GameObject CloseButton;
     public GameObject moveGround;
     public GameObject Target;
+    public GameObject AvatarPosition;
 
     void Start()
     {
@@ -27,5 +28,12 @@ public class AvatarScript : MonoBehaviour
         {
             InvokeRepeating("MoveGround", 0, Time.deltaTime);
         }
+
+        if (collision.collider.tag=="MazeWall")
+        {
+            gameObject.transform.position = AvatarPosition.transform.position;
+        }
     }
+
+
 }
