@@ -26,9 +26,6 @@ public class WaterScale : MonoBehaviour
         {
             CancelInvoke("ScaleWater");
         }
-
-
-
     }
 
     private void OnCollisionExit(Collision collision)
