@@ -26,6 +26,7 @@ TagManager:
   - LeftHand
   - RightHand
   - MazeWall
+  - Joystick
   layers:
   - Default
   - TransparentFX
