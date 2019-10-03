@@ -7,6 +7,7 @@ public class RotateController : MonoBehaviour
 {
     public List<WaterTank> WaterConnector;
     Quaternion targetRotation;
+    
     //Rigidbody rb;
 
     float time;
@@ -31,7 +32,6 @@ public class RotateController : MonoBehaviour
 
     void RotateObjects()
     {
-
 
         //foreach (var item in WaterConnector)
         //{
@@ -58,6 +58,7 @@ public class RotateController : MonoBehaviour
             {
                 item.YRotation += 90;
                 item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
+                
             }
 
             InvokeRepeating("RotateObjects", 0, Time.deltaTime);
@@ -80,7 +81,7 @@ public class RotateController : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
                 print(YRotation);
 
-            myYRotation = transform.rotation.y;
+                myYRotation = transform.rotation.y;
                 if (Direction)
                 {
                     if (transform.rotation.y >= currentEndRotation)
@@ -97,7 +98,7 @@ public class RotateController : MonoBehaviour
                         Invoke("StartRotationConnectors", 0);
                     }
                 }
-           // }
+            //}
         }
     }
 

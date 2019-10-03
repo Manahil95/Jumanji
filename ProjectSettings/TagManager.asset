@@ -25,6 +25,7 @@ TagManager:
   - hand
   - LeftHand
   - RightHand
+  - ONOff
   layers:
   - Default
   - TransparentFX
