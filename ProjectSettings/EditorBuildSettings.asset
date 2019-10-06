@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/BottleAndPuzzle/Scenes/Bottle.unity
     guid: 9c1c13c87e059664fb7f10fde5ee2f79
+  - enabled: 1
+    path: Assets/Scenes/jumanji project_alex_house.unity
+    guid: bfbef704f4a06ce4394186cb917de0d2
   m_configObjects: {}
