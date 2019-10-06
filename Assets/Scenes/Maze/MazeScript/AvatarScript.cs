@@ -8,6 +8,8 @@ public class AvatarScript : MonoBehaviour
     public GameObject moveGround;
     public GameObject Target;
     public GameObject AvatarPosition;
+    public GameObject xWall;
+    public GameObject xWallTarget;
 
     void Start()
     {
@@ -33,6 +35,20 @@ public class AvatarScript : MonoBehaviour
         {
             gameObject.transform.position = AvatarPosition.transform.position;
         }
+
+        int score=0 ;
+        if (collision.collider.tag == "coin")
+        {
+            score += 1;
+            Destroy(collision.gameObject);
+            print(score);
+
+            if (score == 5)
+            {
+                xWall.transform.position = Vector3.MoveTowards(xWall.transform.position, xWallTarget.transform.position, 0.5f * Time.deltaTime);
+            }
+        }
+        
     }
 
 

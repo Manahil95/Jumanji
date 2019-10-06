@@ -5,6 +5,8 @@ using UnityEngine;
 public class MazeMoveScript : MonoBehaviour
 {
     public GameObject Avatar;
+    public Transform pointA, pointB;
+    public float speed;
 
     void Start()
     {
@@ -13,19 +15,22 @@ public class MazeMoveScript : MonoBehaviour
 
     void Update()
     {
-        
+        float time = Mathf.PingPong(Time.time * speed, 1);
+        transform.position = Vector3.Lerp(pointA.position, pointB.position, time);
     }
+
+    
 
     private void Move()
     {
-        if (gameObject.tag == "Walk")
+       if (gameObject.tag == "Walk")
         {
             Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 6);
         }
-        if (gameObject.tag == "WalkBack")
+      if (gameObject.tag == "WalkBack")
         {
             Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 6);
-        }
+       }
         if (gameObject.tag == "MoveRight")
         {
             Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime * 6);
