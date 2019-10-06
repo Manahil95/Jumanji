@@ -233,6 +233,8 @@ public class OVRGrabber : MonoBehaviour
 
     protected virtual void GrabBegin()
     {
+        initailPos = transform.position;
+
         float closestMagSq = float.MaxValue;
         OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
@@ -320,6 +322,10 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
+    Vector3 initailPos;
+    float rotationAngle;
+    Quaternion targetRotation;
+
     protected virtual void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
     {
         if (m_grabbedObj == null)
@@ -327,57 +333,62 @@ public class OVRGrabber : MonoBehaviour
             return;
         }
 
-        Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
-        Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
-        Quaternion grabbableRotation = rot * m_grabbedObjectRotOff;
+        rotationAngle = Vector3.Angle(transform.position, initailPos);
+        print(rotationAngle);
+        targetRotation += Quaternion.Euler(0, rotationAngle * 10, 0.0f);
+        m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-        if (forceTeleport)
-        {
-            //grabbedRigidbody.transform.position = grabbablePosition;
-            //grabbedRigidbody.transform.rotation = grabbableRotation;
-            grabbedRigidbody.transform.eulerAngles = new Vector3(grabbableRotation.eulerAngles.x, 0, grabbableRotation.eulerAngles.z);
-        }
-        else
-        {
-            //grabbedRigidbody.MovePosition(grabbablePosition);
-            //grabbedRigidbody.MoveRotation(grabbableRotation);
-            if (grabbedObject.transform.tag == "Joystick")
-            {
-                grabbedRigidbody.transform.eulerAngles = new Vector3(transform.position.z * 90f - 160, 0, -transform.position.x * 90f + m_Offset);
+        //Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
+        //Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
+        //Quaternion grabbableRotation = rot * m_grabbedObjectRotOff;
 
-                if (grabbedRigidbody.transform.eulerAngles.x < 45 && grabbedRigidbody.transform.eulerAngles.x > 0)
-                {
-                    //Zdirection = 1;
-                    //Avatar.transform.position += new Vector3(0, 0, Zdirection * speed);
-                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 0.5f);
-                    
-                }
-                if (grabbedRigidbody.transform.eulerAngles.x < 360 && grabbedRigidbody.transform.eulerAngles.x > 320)
-                {
-                    //Zdirection = -1;
-                    //Avatar.transform.position += new Vector3(0, 0, Zdirection * speed);
-                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 0.5f);
-                    
-                }
-                if (grabbedRigidbody.transform.eulerAngles.z < 45 && grabbedRigidbody.transform.eulerAngles.z > 0)
-                {
-                    // Xdirection = -1;
-                    //Avatar.transform.position += new Vector3(Xdirection * speed, 0, 0);
-                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 0.5f);
-                    
-                }
-                if (grabbedRigidbody.transform.eulerAngles.z < 360 && grabbedRigidbody.transform.eulerAngles.z > 320)
-                {
-                    //Xdirection = 1;
-                    //Avatar.transform.position += new Vector3(Xdirection * speed, 0, 0);
-                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime* 0.5f);
-                }
-            }
-            else
-            {
-                grabbedRigidbody.transform.eulerAngles = new Vector3(grabbableRotation.eulerAngles.x, 0, grabbableRotation.eulerAngles.z);
-            }
-        }
+        //if (forceTeleport)
+        //{
+        //    //grabbedRigidbody.transform.position = grabbablePosition;
+        //    //grabbedRigidbody.transform.rotation = grabbableRotation;
+        //    grabbedRigidbody.transform.eulerAngles = new Vector3(grabbableRotation.eulerAngles.x, 0, grabbableRotation.eulerAngles.z);
+        //}
+        //else
+        //{
+        //    //grabbedRigidbody.MovePosition(grabbablePosition);
+        //    //grabbedRigidbody.MoveRotation(grabbableRotation);
+        //    if (grabbedObject.transform.tag == "Joystick")
+        //    {
+        //        grabbedRigidbody.transform.eulerAngles = new Vector3(transform.position.z * 90f - 160, 0, -transform.position.x * 90f + m_Offset);
+
+        //        if (grabbedRigidbody.transform.eulerAngles.x < 45 && grabbedRigidbody.transform.eulerAngles.x > 0)
+        //        {
+        //            //Zdirection = 1;
+        //            //Avatar.transform.position += new Vector3(0, 0, Zdirection * speed);
+        //            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 0.5f);
+
+        //        }
+        //        if (grabbedRigidbody.transform.eulerAngles.x < 360 && grabbedRigidbody.transform.eulerAngles.x > 320)
+        //        {
+        //            //Zdirection = -1;
+        //            //Avatar.transform.position += new Vector3(0, 0, Zdirection * speed);
+        //            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 0.5f);
+
+        //        }
+        //        if (grabbedRigidbody.transform.eulerAngles.z < 45 && grabbedRigidbody.transform.eulerAngles.z > 0)
+        //        {
+        //            // Xdirection = -1;
+        //            //Avatar.transform.position += new Vector3(Xdirection * speed, 0, 0);
+        //            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 0.5f);
+
+        //        }
+        //        if (grabbedRigidbody.transform.eulerAngles.z < 360 && grabbedRigidbody.transform.eulerAngles.z > 320)
+        //        {
+        //            //Xdirection = 1;
+        //            //Avatar.transform.position += new Vector3(Xdirection * speed, 0, 0);
+        //            Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime* 0.5f);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        grabbedRigidbody.transform.eulerAngles = new Vector3(grabbableRotation.eulerAngles.x, 0, grabbableRotation.eulerAngles.z);
+        //    }
+        //}
     }
 
     protected void GrabEnd()
