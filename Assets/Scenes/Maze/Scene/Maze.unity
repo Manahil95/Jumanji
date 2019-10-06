@@ -705,6 +705,36 @@ Transform:
   m_Father: {fileID: 1449553939}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 90}
+--- !u!1 &338803333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 338803334}
+  m_Layer: 0
+  m_Name: xWallTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &338803334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338803333}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -1.49, y: -1.221, z: 5.63}
+  m_LocalScale: {x: 1.454371, y: 1.1248499, z: 0.11887012}
+  m_Children: []
+  m_Father: {fileID: 1923155259}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398108183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1340,7 @@ Transform:
   m_LocalScale: {x: 8.209734, y: 1.1248466, z: 0.14778852}
   m_Children: []
   m_Father: {fileID: 1923155259}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &576798377
 BoxCollider:
@@ -2134,7 +2164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072188745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0013168846, y: 0.5555555, z: 3.4570014}
+  m_LocalPosition: {x: -0.0013168846, y: 0.59, z: 3.4570014}
   m_LocalScale: {x: 0.69596595, y: 0.067113854, z: 2.0323436}
   m_Children: []
   m_Father: {fileID: 1023729096}
@@ -3349,7 +3379,7 @@ GameObject:
   - component: {fileID: 1387156318}
   m_Layer: 0
   m_Name: Xwall
-  m_TagString: MazeWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3519,7 +3549,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431599835}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -3900,6 +3930,8 @@ MonoBehaviour:
   moveGround: {fileID: 1072188745}
   Target: {fileID: 1157184647}
   AvatarPosition: {fileID: 1448897692}
+  xWall: {fileID: 1387156315}
+  xWallTarget: {fileID: 338803333}
 --- !u!54 &1579482485
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4344,7 +4376,7 @@ Transform:
   m_LocalScale: {x: 13.44936, y: 1.1910139, z: 0.118869744}
   m_Children: []
   m_Father: {fileID: 1923155259}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &1782319843
 BoxCollider:
@@ -4698,10 +4730,11 @@ Transform:
   - {fileID: 1226296579}
   - {fileID: 507023029}
   - {fileID: 2040439931}
-  - {fileID: 1782319842}
   - {fileID: 576798376}
+  - {fileID: 1782319842}
   - {fileID: 1113705235}
   - {fileID: 1387156316}
+  - {fileID: 338803334}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
