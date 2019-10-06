@@ -234,6 +234,7 @@ public class OVRGrabber : MonoBehaviour
     protected virtual void GrabBegin()
     {
         initailPos = transform.position;
+        xAngle = zAngle = 0;
 
         float closestMagSq = float.MaxValue;
         OVRGrabbable closestGrabbable = null;
@@ -323,7 +324,7 @@ public class OVRGrabber : MonoBehaviour
     }
 
     Vector3 initailPos;
-    float rotationAngle;
+    float xAngle, zAngle;
     Quaternion targetRotation;
 
     protected virtual void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
@@ -333,9 +334,8 @@ public class OVRGrabber : MonoBehaviour
             return;
         }
 
-        rotationAngle = Vector3.Angle(transform.position, initailPos);
-        print(rotationAngle);
-        targetRotation += Quaternion.Euler(0, rotationAngle * 10, 0.0f);
+        xAngle = Vector3.Angle(new Vector3(0, transform.position.y, transform.position.z), new Vector3(0, initailPos.y, initailPos.z));
+        targetRotation = Quaternion.Euler(xAngle * -20, 0, 0);
         m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
         //Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
