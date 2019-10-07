@@ -9,34 +9,38 @@ public class SwitchOnOff : MonoBehaviour
 
     float Speed = 5f;
     Vector3 temp;
-    private void Start()
-    {
-        
-    }
+    public  bool GeneratesWater;
+    public WaterTank MyWaterTank;
+
+
     void ScaleWater()
     {
         temp = Water.transform.localScale;
         temp.x += Time.deltaTime;
         transform.localScale = temp;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         print("Hi");
     }
-    private void OnTriggrerStay(Collision other)
+
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "ONOff")// && other.gameObject.tag == "Wall")
+        if (MyWaterTank.Unlocked )
         {
-            print("Alesta");
-            InvokeRepeating("ScaleWater", 0, Time.deltaTime);
+            if (other.gameObject.tag == "ONOff")
+            {
+                print("Alesta");
+                if(GeneratesWater)
+                    InvokeRepeating("ScaleWater", 0, Time.deltaTime);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        CancelInvoke();
-        Destroy(Water);
+        //CancelInvoke();
+        //Destroy(Water);
     }
-   
-
 }
