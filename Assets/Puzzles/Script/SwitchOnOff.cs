@@ -8,16 +8,18 @@ public class SwitchOnOff : MonoBehaviour
     public GameObject Water;
 
     float Speed = 5f;
-    Vector3 temp;
+    Vector3 waterScale;
     public  bool GeneratesWater;
     public WaterTank MyWaterTank;
 
 
     void ScaleWater()
     {
-        temp = Water.transform.localScale;
-        temp.x += Time.deltaTime;
-        transform.localScale = temp;
+        waterScale = Water.transform.localScale;
+        waterScale.x += Time.deltaTime;
+        Water.transform.localScale = waterScale;
+
+
     }
 
     private void OnTriggerEnter(Collider other)

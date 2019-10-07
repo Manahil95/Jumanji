@@ -73,10 +73,10 @@ public class RotateController : MonoBehaviour
         if (canMove)
         {
             handCurrentPos = hands.position;
-            crossVec = Vector3.Cross(new Vector3(handInitialPos.x, 0, handInitialPos.y), new Vector3(handCurrentPos.x, 0, handCurrentPos.y));
+            crossVec = Vector3.Cross(new Vector3(handInitialPos.x, 0, handInitialPos.z), new Vector3(handCurrentPos.x, 0, handCurrentPos.z));
             //if (crossVec.y > 0)
             //{
-                YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.y), new Vector3(handInitialPos.x, 0, handInitialPos.y));
+                YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.z), new Vector3(handInitialPos.x, 0, handInitialPos.z));
                 targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
                 print(YRotation);
