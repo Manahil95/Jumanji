@@ -164,7 +164,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Maze.Jumanji
+    Android: com.Cave.Jumanji
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 21
