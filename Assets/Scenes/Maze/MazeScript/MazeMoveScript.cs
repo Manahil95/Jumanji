@@ -15,8 +15,12 @@ public class MazeMoveScript : MonoBehaviour
 
     void Update()
     {
-        float time = Mathf.PingPong(Time.time * speed, 1);
-        transform.position = Vector3.Lerp(pointA.position, pointB.position, time);
+        
+        if (pointA!= null)
+        {
+            float time = Mathf.PingPong(Time.time * speed, 1);
+            transform.position = Vector3.Lerp(pointA.position, pointB.position, time);
+        }
     }
 
     

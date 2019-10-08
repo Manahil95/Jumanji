@@ -10,7 +10,7 @@ public class AvatarScript : MonoBehaviour
     public GameObject AvatarPosition;
     public GameObject xWall;
     public GameObject xWallTarget;
-    public int score = 0;
+    int score = 0;
 
     void Start()
     {
@@ -26,11 +26,10 @@ public class AvatarScript : MonoBehaviour
         moveGround.transform.position = Vector3.MoveTowards(moveGround.transform.position, Target.transform.position, 20 * Time.deltaTime);
     }
 
-    private void MoveWall()
+    private void openDoor()
     {
         xWall.transform.position = Vector3.MoveTowards(xWall.transform.position, xWallTarget.transform.position, 0.5f * Time.deltaTime);
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject == CloseButton)
@@ -43,21 +42,23 @@ public class AvatarScript : MonoBehaviour
             gameObject.transform.position = AvatarPosition.transform.position;
         }
 
-        
+        if (collision.collider.tag == "Enemy")
+        {
+            gameObject.transform.position = AvatarPosition.transform.position;
+        }
+
         if (collision.collider.tag == "coin")
         {
             Destroy(collision.gameObject);
             score += 1;
             Debug.Log(score);
 
-            if (score == 5)
+            if (score >= 5)
             {
-                InvokeRepeating("MoveWall", 0, Time.deltaTime);
+                InvokeRepeating("openDoor", 0, Time.deltaTime);
             }
         }
-
         
     }
-
 
 }

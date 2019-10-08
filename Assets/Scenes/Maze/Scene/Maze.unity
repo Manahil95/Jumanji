@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 311883674}
   - component: {fileID: 311883677}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338803333}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -1.49, y: -1.26, z: 5.63}
+  m_LocalPosition: {x: -1.49, y: -1.25, z: 5.64}
   m_LocalScale: {x: 1.4543713, y: 1.1248499, z: 0.11887006}
   m_Children: []
   m_Father: {fileID: 1923155259}
@@ -1884,7 +1884,7 @@ GameObject:
   - component: {fileID: 1021969583}
   - component: {fileID: 1021969586}
   m_Layer: 0
-  m_Name: Sphere (4)
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072188745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0013168846, y: 0.52, z: 3.4570014}
+  m_LocalPosition: {x: -0.0013168846, y: 0.52, z: 3.48}
   m_LocalScale: {x: 0.69596595, y: 0.067113854, z: 2.0323436}
   m_Children: []
   m_Father: {fileID: 1023729096}
@@ -3187,7 +3187,7 @@ GameObject:
   - component: {fileID: 1300674906}
   - component: {fileID: 1300674909}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3470,13 +3470,13 @@ GameObject:
   - component: {fileID: 1387156316}
   - component: {fileID: 1387156319}
   - component: {fileID: 1387156318}
-  - component: {fileID: 1387156317}
+  - component: {fileID: 1387156321}
   m_Layer: 0
   m_Name: Xwall
-  m_TagString: Wall
+  m_TagString: MazeWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1387156316
 Transform:
@@ -3486,31 +3486,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387156315}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -1.49, y: -0.078887105, z: 5.63}
-  m_LocalScale: {x: 1.4543713, y: 1.1248499, z: 0.11887006}
+  m_LocalPosition: {x: -1.47774, y: -0.0788871, z: 5.64}
+  m_LocalScale: {x: 1.589773, y: 1.1248499, z: 0.11887006}
   m_Children: []
   m_Father: {fileID: 1923155259}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1387156317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387156315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1abcbd17a696d428be8691ecbac821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CloseButton: {fileID: 0}
-  moveGround: {fileID: 0}
-  Target: {fileID: 0}
-  AvatarPosition: {fileID: 0}
-  xWall: {fileID: 1387156315}
-  xWallTarget: {fileID: 338803333}
-  score: 0
 --- !u!23 &1387156318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3557,6 +3538,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387156315}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1387156321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387156315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 0.99999994, z: 1.0000004}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1421025493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,7 +3746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448897692}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: -4.61, y: 0.706, z: -7.065}
+  m_LocalPosition: {x: -4.541, y: 0.768, z: -7.636}
   m_LocalScale: {x: 0.34505135, y: 0.39304793, z: 0.34505135}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3808,7 +3802,7 @@ GameObject:
   - component: {fileID: 1554242902}
   - component: {fileID: 1554242905}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4022,7 +4016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579482479}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: -4.541, y: 0.744, z: -7.13}
+  m_LocalPosition: {x: -4.541, y: 0.768, z: -7.636}
   m_LocalScale: {x: 0.34505135, y: 0.39304793, z: 0.34505135}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4046,7 +4040,6 @@ MonoBehaviour:
   AvatarPosition: {fileID: 1448897692}
   xWall: {fileID: 1387156315}
   xWallTarget: {fileID: 338803333}
-  score: 0
 --- !u!54 &1579482485
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4077,7 +4070,7 @@ GameObject:
   - component: {fileID: 1677419995}
   - component: {fileID: 1677419998}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
