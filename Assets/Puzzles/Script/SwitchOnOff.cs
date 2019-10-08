@@ -16,26 +16,38 @@ public class SwitchOnOff : MonoBehaviour
     void ScaleWater()
     {
         waterScale = Water.transform.localScale;
-        waterScale.x += Time.deltaTime;
-        Water.transform.localScale = waterScale;
+        if(waterScale.x <= 3)
+        {
+            waterScale.x += Time.deltaTime;
+            Water.transform.localScale = waterScale;
+        }
+    }
 
-
+    void ScaleWaterBack()
+    {
+        waterScale = Water.transform.localScale;
+        if (waterScale.x >= 3)
+        {
+            waterScale.x -= Time.deltaTime;
+            Water.transform.localScale = waterScale;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         print("Hi");
+        InvokeRepeating("ScaleWater", 0, Time.deltaTime);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (MyWaterTank.Unlocked )
+        if (MyWaterTank.Unlocked)
         {
             if (other.gameObject.tag == "ONOff")
             {
-                print("Alesta");
-                if(GeneratesWater)
-                    InvokeRepeating("ScaleWater", 0, Time.deltaTime);
+                //print("Alesta");
+                //if(GeneratesWater)
+               InvokeRepeating("ScaleWater", 0, Time.deltaTime);
             }
         }
     }
@@ -44,5 +56,6 @@ public class SwitchOnOff : MonoBehaviour
     {
         //CancelInvoke();
         //Destroy(Water);
+        InvokeRepeating("ScaleWaterBack", 0, Time.deltaTime);
     }
 }

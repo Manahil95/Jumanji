@@ -6,7 +6,7 @@ public class WaterScale : MonoBehaviour
 {
     float Speed = 5f;
     Vector3 temp;
-
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -14,24 +14,18 @@ public class WaterScale : MonoBehaviour
     }
 
     void ScaleWater()
-    {
-        temp = transform.localScale;
-        temp.x += Time.deltaTime;
-        transform.localScale = temp;
+    { 
+       temp = transform.localScale;
+       if (temp.x <= 3)
+       {
+         temp.x += Time.deltaTime;
+         transform.localScale = temp;
+       }
+
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Wall")
-        {
-            CancelInvoke("ScaleWater");
-        }
-    }
+    
 
-    private void OnCollisionExit(Collision collision)
-    {
-        InvokeRepeating("ScaleWater", 0, Time.deltaTime);
-    }
-
+ 
     
 }

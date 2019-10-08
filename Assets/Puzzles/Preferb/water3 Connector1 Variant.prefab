@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   YRotation: 0
   TargetRotation: {x: 0, y: 0, z: 0, w: 0}
+  Unlocked: 0
 --- !u!1001 &1864367023802053307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,10 +199,40 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 9145855041511447062, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145855041511447062, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145855041511447048, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145855043185850962, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145855043185850962, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9145855043185850965, guid: e0b936b237a285342a127bc9b77309af,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.45399976
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145855043185850964, guid: e0b936b237a285342a127bc9b77309af,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9145855042469220204, guid: e0b936b237a285342a127bc9b77309af,
         type: 3}
@@ -212,26 +243,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145855041511447062, guid: e0b936b237a285342a127bc9b77309af,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145855043185850962, guid: e0b936b237a285342a127bc9b77309af,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145855041511447048, guid: e0b936b237a285342a127bc9b77309af,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145855043185850964, guid: e0b936b237a285342a127bc9b77309af,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9145855041459269164, guid: e0b936b237a285342a127bc9b77309af, type: 3}
