@@ -334,9 +334,19 @@ public class OVRGrabber : MonoBehaviour
             return;
         }
 
-        xAngle = Vector3.Angle(new Vector3(0, transform.position.y, transform.position.z), new Vector3(0, initailPos.y, initailPos.z));
-        targetRotation = Quaternion.Euler(xAngle * -20, 0, 0);
-        m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+        print(transform.position - initailPos);
+        if (Vector3.ClampMagnitude(transform.position - initailPos, 1).z > 0.1f)
+        {
+            xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+            targetRotation = Quaternion.Euler(xAngle * 100, 0, 0);
+            m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+        }
+        else if (Vector3.ClampMagnitude(transform.position - initailPos, 1).z < -0.1f)
+        {
+            xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+            targetRotation = Quaternion.Euler(xAngle * -100, 0, 0);
+            m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+        }
 
         //Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
         //Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
