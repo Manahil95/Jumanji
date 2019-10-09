@@ -51,6 +51,7 @@ public class AvatarScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
             score += 1;
+
             Debug.Log(score);
 
             if (score >= 5)
