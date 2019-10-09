@@ -25,6 +25,7 @@ TagManager:
   - hand
   - LeftHand
   - RightHand
+  - Bord
   layers:
   - Default
   - TransparentFX
