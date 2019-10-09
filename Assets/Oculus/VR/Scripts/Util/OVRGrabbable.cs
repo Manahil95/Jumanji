@@ -136,7 +136,7 @@ public class OVRGrabbable : MonoBehaviour
         {
             rb.isKinematic = true;
             transform.position = hangerPosition.position;
-            transform.rotation = Quaternion.identity;
+            transform.localRotation = new Quaternion(-13.121f, 4.366f, -50.882f, 0);
         }
         else
         {
@@ -249,10 +249,11 @@ public class OVRGrabbable : MonoBehaviour
                             return;
                     }
                 }
-                BottleRing.SetActive(true);
+
+                BottleRing.GetComponent<MeshRenderer>().enabled = true;
                 hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
-                other.transform.parent = BottleParent;
+                transform.parent = BottleParent;
             }
         }
 
