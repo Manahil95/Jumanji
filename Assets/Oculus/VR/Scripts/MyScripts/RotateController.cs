@@ -7,11 +7,11 @@ public class RotateController : MonoBehaviour
 {
     public List<WaterTank> WaterConnector;
     Quaternion targetRotation;
-    
+
     //Rigidbody rb;
 
     float time;
-    bool canMove = true;
+    bool canMove = false;
     float YRotation;
 
     public Vector3 handInitialPos;
@@ -32,37 +32,27 @@ public class RotateController : MonoBehaviour
 
     void RotateObjects()
     {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-        //foreach (var item in WaterConnector)
-        //{
-        //    item.transform.rotation = Quaternion.RotateTowards(item.transform.rotation, item.TargetRotation, 100 * Time.deltaTime);
-        //}
-
-        //if (time >= 1)
-        //{
-        //    CancelInvoke();
-        //    move = false;
-        //}
+        foreach (var item in WaterConnector)
+        {
+            item.transform.rotation = Quaternion.RotateTowards(item.transform.rotation, item.TargetRotation, 100 * Time.deltaTime);
+        }
     }
 
     private void OnMouseDown()
     {
-        if (!canMove)
+        YRotation += 90;
+        targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+
+        foreach (var item in WaterConnector)
         {
-            time = 0;
-            canMove = true;
-            YRotation += 90;
-            targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+            item.YRotation += 90;
+            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
 
-            foreach (var item in WaterConnector)
-            {
-                item.YRotation += 90;
-                item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
-                
-            }
-
-            InvokeRepeating("RotateObjects", 0, Time.deltaTime);
         }
+
+        InvokeRepeating("RotateObjects", 0, Time.deltaTime);
     }
 
     public Vector3 crossVec;
@@ -76,28 +66,28 @@ public class RotateController : MonoBehaviour
             crossVec = Vector3.Cross(new Vector3(handInitialPos.x, 0, handInitialPos.z), new Vector3(handCurrentPos.x, 0, handCurrentPos.z));
             //if (crossVec.y > 0)
             //{
-                YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.z), new Vector3(handInitialPos.x, 0, handInitialPos.z));
-                targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
-                print(YRotation);
+            YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.z), new Vector3(handInitialPos.x, 0, handInitialPos.z));
+            targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
+            print(YRotation);
 
-                myYRotation = transform.rotation.y;
-                if (Direction)
+            myYRotation = transform.rotation.y;
+            if (Direction)
+            {
+                if (transform.rotation.y >= currentEndRotation)
                 {
-                    if (transform.rotation.y >= currentEndRotation)
-                    {
-                        canMove = false;
-                        Invoke("StartRotationConnectors", 0);
-                    }
+                    canMove = false;
+                    Invoke("StartRotationConnectors", 0);
                 }
-                else
+            }
+            else
+            {
+                if (transform.rotation.y <= currentEndRotation)
                 {
-                    if (transform.rotation.y <= currentEndRotation)
-                    {
-                        canMove = false;
-                        Invoke("StartRotationConnectors", 0);
-                    }
+                    canMove = false;
+                    Invoke("StartRotationConnectors", 0);
                 }
+            }
             //}
         }
     }
@@ -106,6 +96,7 @@ public class RotateController : MonoBehaviour
     {
         foreach (var item in WaterConnector)
         {
+            item.Moving = true;
             item.YRotation += 90;
             item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
         }
@@ -125,6 +116,10 @@ public class RotateController : MonoBehaviour
     void StopRotatingConnectors()
     {
         CancelInvoke("RotateWaterConnectors");
+        foreach (var item in WaterConnector)
+        {
+            item.Moving = false;
+        }
         canMove = true;
         endRotationIndex++;
         if (endRotationIndex == 4)
