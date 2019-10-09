@@ -189,12 +189,15 @@ public class OVRGrabbable : MonoBehaviour
     Transform originalPos;
 
     public Transform hangingPosition;
+    public GameObject BottleRing;
+    public Transform BottleParent;
+
 
     private void OnTriggerStay(Collider other)
     {
-        if (myType == Type.Hanger)
+        if (myType == Type.Rope)
         {
-            if (other.tag == "HangerPositioPlace")
+            if (other.tag == "HangerPositionPlace")
             {
                 Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
 
@@ -212,25 +215,25 @@ public class OVRGrabbable : MonoBehaviour
             }
         }
 
-        if (myType == Type.Rope)
-        {
-            if (other.tag == "Hanger")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+        //if (myType == Type.Rope)
+        //{
+        //    if (other.tag == "Hanger")
+        //    {
+        //        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
 
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Rope")
-                            return;
-                    }
-                }
+        //        foreach (var item in overlappedColliders)
+        //        {
+        //            if (item != GetComponent<Collider>())
+        //            {
+        //                if (item.tag == "Rope")
+        //                    return;
+        //            }
+        //        }
 
-                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-                inPlace = true;
-            }
-        }
+        //        hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
+        //        inPlace = true;
+        //    }
+        //}
 
         if (myType == Type.Bottle)
         {
@@ -246,9 +249,10 @@ public class OVRGrabbable : MonoBehaviour
                             return;
                     }
                 }
-
+                BottleRing.SetActive(true);
                 hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
                 inPlace = true;
+                other.transform.parent = BottleParent;
             }
         }
 
@@ -256,22 +260,22 @@ public class OVRGrabbable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (myType == Type.Hanger)
-        {
-            if (other.tag == "HangerPositioPlace")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
         if (myType == Type.Rope)
         {
-            if (other.tag == "Hanger")
+            if (other.tag == "HangerPositionPlace")
             {
                 hangerPosition = null;
                 inPlace = false;
             }
         }
+        //if (myType == Type.Rope)
+        //{
+        //    if (other.tag == "Hanger")
+        //    {
+        //        hangerPosition = null;
+        //        inPlace = false;
+        //    }
+        //}
         if (myType == Type.Bottle)
         {
             if (other.tag == "Rope")
