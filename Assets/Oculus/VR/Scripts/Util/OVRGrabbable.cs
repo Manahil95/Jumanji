@@ -136,7 +136,6 @@ public class OVRGrabbable : MonoBehaviour
         {
             rb.isKinematic = true;
             transform.position = hangerPosition.position;
-//transform.localRotation = new Quaternion(-13.121f, 4.366f, -50.882f, 0);
         }
         else
         {
@@ -193,27 +192,12 @@ public class OVRGrabbable : MonoBehaviour
     public Transform BottleParent;
 
 
+
+
     private void OnTriggerStay(Collider other)
     {
-        if (myType == Type.Rope)
-        {
-            if (other.tag == "HangerPositionPlace")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Hanger")
-                            return;
-                    }
-                }
-
-                hangerPosition = other.transform;
-                inPlace = true;
-            }
-        }
+        //BottleRing.GetComponent<MeshRenderer>().enabled = false;
+       
 
         //if (myType == Type.Rope)
         //{
@@ -261,14 +245,7 @@ public class OVRGrabbable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (myType == Type.Rope)
-        {
-            if (other.tag == "HangerPositionPlace")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
+       
         //if (myType == Type.Rope)
         //{
         //    if (other.tag == "Hanger")
