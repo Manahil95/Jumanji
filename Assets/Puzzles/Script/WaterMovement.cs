@@ -7,6 +7,7 @@ public class WaterMovement : MonoBehaviour
 {
     public WaterTank myWaterTank;
     public WaterTank NextWaterTank;
+    public WaterScale waterScale;
     public bool WaterStartingPoint;
     public bool CanFlow;
 
@@ -79,6 +80,23 @@ public class WaterMovement : MonoBehaviour
         //}
     }
 
+    //void FillWaterTank()
+    //{
+    //    temp = transform.localScale;
+    //    if (temp.x < 2.5f)
+    //    {
+    //        temp.x += Time.deltaTime;
+    //        temp.y += Time.deltaTime;
+    //        temp.z += Time.deltaTime;
+    //        transform.localScale = temp;
+    //    }
+    //    else if (temp.x >= 2.5f)
+    //    {
+    //        CancelInvoke();
+    //    }
+    //}
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "ONOff")
@@ -89,6 +107,12 @@ public class WaterMovement : MonoBehaviour
                 NextWaterTank.unlocked.Invoke(true);
             //print(name);
             //print(Time.time + " : " + NextWaterTank.name);
+        }
+
+        if (other.tag == "WaterExetCollider")
+        {
+            waterScale.InvokeRepeating("ScaleWater", 0, Time.deltaTime);
+            //InvokeRepeating("FillWaterTank", 0, Time.deltaTime);
         }
     }
 

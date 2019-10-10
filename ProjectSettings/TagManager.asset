@@ -29,6 +29,7 @@ TagManager:
   - Unloked
   - Water
   - WaterStartingCollider
+  - WaterExetCollider
   layers:
   - Default
   - TransparentFX
