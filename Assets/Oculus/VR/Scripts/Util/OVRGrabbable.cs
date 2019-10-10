@@ -136,7 +136,7 @@ public class OVRGrabbable : MonoBehaviour
         {
             rb.isKinematic = true;
             transform.position = hangerPosition.position;
-            transform.localRotation = new Quaternion(-13.121f, 4.366f, -50.882f, 0);
+//transform.localRotation = new Quaternion(-13.121f, 4.366f, -50.882f, 0);
         }
         else
         {
