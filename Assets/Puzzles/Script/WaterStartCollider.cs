@@ -12,10 +12,7 @@ public class WaterStartCollider : MonoBehaviour
         {
             if (myWaterMovement.FlowWater != null)
                 myWaterMovement.FlowWater.Invoke(true);
-            //myWaterMovement.CanFlow = true;
         }
-
-        print(Time.time + " : " + myWaterMovement.CanFlow);
     }
 
     void OnTriggerExit(Collider other)
@@ -24,9 +21,6 @@ public class WaterStartCollider : MonoBehaviour
         {
             if (myWaterMovement.FlowWater != null)
                 myWaterMovement.FlowWater.Invoke(false);
-            //myWaterMovement.CanFlow = false;
         }
-
-        print(Time.time + " : " + myWaterMovement.CanFlow);
     }
 }

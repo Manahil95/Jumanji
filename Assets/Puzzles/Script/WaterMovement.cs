@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaterMovement : MonoBehaviour
 {
     public WaterTank myWaterTank;
+    public WaterTank NextWaterTank;
     public bool WaterStartingPoint;
     public bool CanFlow;
 
@@ -82,12 +83,12 @@ public class WaterMovement : MonoBehaviour
     {
         if (other.tag == "ONOff")
         {
-            myWaterTank.Unlocked = true;
+            NextWaterTank.Unlocked = true;
 
-            if (myWaterTank.unlocked != null)
-                myWaterTank.unlocked.Invoke(true);
+            if (NextWaterTank.unlocked != null)
+                NextWaterTank.unlocked.Invoke(true);
             //print(name);
-            //print(Time.time + " : " + myWaterTank.Unlocked);
+            //print(Time.time + " : " + NextWaterTank.name);
         }
     }
 
@@ -95,12 +96,12 @@ public class WaterMovement : MonoBehaviour
     {
         if (other.tag == "ONOff")
         {
-            myWaterTank.Unlocked = false;
+            NextWaterTank.Unlocked = false;
 
-            if (myWaterTank.unlocked != null)
-                myWaterTank.unlocked.Invoke(false);
+            if (NextWaterTank.unlocked != null)
+                NextWaterTank.unlocked.Invoke(false);
             //print(name);
-            //print(Time.time + " : " + myWaterTank.Unlocked);
+            //print(Time.time + " : " + NextWaterTank.name);
         }
     }
 }
