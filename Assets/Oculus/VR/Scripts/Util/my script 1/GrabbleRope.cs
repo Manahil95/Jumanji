@@ -7,19 +7,10 @@ public class GrabbleRope : OVRGrabbable
     public HangerScript hangerSript;
     bool inPlace;
     Transform hangerPosition;
+    public Transform hangingPosition;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    public List<GameObject> BottleRing;
+    public List<Transform> BottleParent;
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
         base.GrabBegin(hand, grabPoint);
@@ -54,9 +45,7 @@ public class GrabbleRope : OVRGrabbable
             }
 
             print("Here");
-            //hangerSript.HangingPos = hangerPosition;
             hangerPosition = other.GetComponent<HangerScript>().HangingPos;
-            //hangerPosition = hangerSript.HangingPos;
             inPlace = true;
         }
     }

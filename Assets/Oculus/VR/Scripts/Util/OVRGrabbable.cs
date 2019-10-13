@@ -208,27 +208,7 @@ public class OVRGrabbable : MonoBehaviour
         //    }
         //}
 
-        //if (myType == Type.Bottle)
-        //{
-        //    if (other.tag == "Rope")
-        //    {
-        //        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-        //        foreach (var item in overlappedColliders)
-        //        {
-        //            if (item != GetComponent<Collider>())
-        //            {
-        //                if (item.tag == "Bottle")
-        //                    return;
-        //            }
-        //        }
-
-        //        BottleRing.GetComponent<MeshRenderer>().enabled = true;
-        //        hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-        //        inPlace = true;
-        //        transform.parent = BottleParent;
-        //    }
-        //}
+        
 
     }
 
