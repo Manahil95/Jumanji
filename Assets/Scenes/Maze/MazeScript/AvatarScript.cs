@@ -14,7 +14,6 @@ public class AvatarScript : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -32,9 +31,10 @@ public class AvatarScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject == CloseButton)
+        if (collision.gameObject == CloseButton)
         {
-            InvokeRepeating("MoveGround", 0, Time.deltaTime);
+            moveGround.GetComponent<Animator>().SetBool("Close", true);
+            //InvokeRepeating("MoveGround", 0, Time.deltaTime);
         }
 
         if (collision.collider.tag=="MazeWall")
