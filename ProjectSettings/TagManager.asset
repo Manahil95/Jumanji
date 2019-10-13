@@ -27,8 +27,8 @@ TagManager:
   - RightHand
   - MazeWall
   - Joystick
-  - Joystick Green
   - coin
+  - Joystick1
   layers:
   - Default
   - TransparentFX

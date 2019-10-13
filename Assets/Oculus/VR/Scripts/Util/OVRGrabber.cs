@@ -28,11 +28,11 @@ public class OVRGrabber : MonoBehaviour
     public float grabEnd = 0.35f;
 
     public GameObject Avatar;
-    public float speed = 0.01f;
-    public float Ydirection = 0;
-    public float Xdirection = 0;
-    public float Zdirection = 0;
-    public float m_Offset;
+    //public float speed = 0.01f;
+    //public float Ydirection = 0;
+    //public float Xdirection = 0;
+    //public float Zdirection = 0;
+    //public float m_Offset;
 
     // Demonstrates parenting the held object to the hand's transform when grabbed.
     // When false, the grabbed object is moved every FixedUpdate using MovePosition.
@@ -336,50 +336,55 @@ public class OVRGrabber : MonoBehaviour
 
         print(transform.position - initailPos);
 
-        float x = Vector3.ClampMagnitude(transform.position - initailPos, 1).x;
-        float z = Vector3.ClampMagnitude(transform.position - initailPos, 1).z;
-
-        if (Mathf.Abs(z) > Mathf.Abs(x))
-        {
-            if (z > 0.1f)
+               //if (Mathf.Abs(z) > Mathf.Abs(x))
+        //{
+            if (grabbedObject.transform.tag == "Joystick")
             {
-                zAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
-                targetRotation = Quaternion.Euler(zAngle * 100, 0, 0);
-                m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+                float z = Vector3.ClampMagnitude(transform.position - initailPos, 1).z;
+                if (z > 0.1f)
+                {
+                    zAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+                    targetRotation = Quaternion.Euler(zAngle * 100, 0, 0);
+                    m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 0.7f);
+                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.forward * Time.deltaTime * 0.7f);
 
+                }
+                else if (z < -0.1f)
+                {
+                    zAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+                    targetRotation = Quaternion.Euler(zAngle * -100, 0, 0);
+                    m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+
+                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 0.7f);
+                }
             }
-            else if (z < -0.1f)
-            {
-                zAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
-                targetRotation = Quaternion.Euler(zAngle * -100, 0, 0);
-                m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+        //}
+        
+        //else if (Mathf.Abs(x) > Mathf.Abs(z))
+        //{
+           if (grabbedObject.transform.tag == "Joystick1")
+           {
+                float x = Vector3.ClampMagnitude(transform.position - initailPos, 1).x;
+                if (x > 0.1f)
+                {
+                    xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+                    targetRotation = Quaternion.Euler(0, 0, xAngle * 100);
+                    m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.back * Time.deltaTime * 0.7f);
+                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime * 0.7f);
+
+                }
+                else if (x > -0.1f)
+                {
+                    xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
+                    targetRotation = Quaternion.Euler(0, 0, xAngle * -100);
+                    m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
+
+                    Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 0.7f);
+                }
             }
-        }
-        else if (Mathf.Abs(x) > Mathf.Abs(z))
-        {
-            if (x > 0.1f)
-            {
-                xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
-                targetRotation = Quaternion.Euler(0, 0, xAngle * 100);
-                m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
-
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.right * Time.deltaTime * 0.7f);
-
-            }
-            else if (x > -0.1f)
-            {
-                xAngle = Vector3.Angle(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(initailPos.x, 0, initailPos.z));
-                targetRotation = Quaternion.Euler(0, 0, xAngle * -100);
-                m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
-
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 0.7f);
-
-            }
-        }
+        //}
 
         //Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
         //Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
