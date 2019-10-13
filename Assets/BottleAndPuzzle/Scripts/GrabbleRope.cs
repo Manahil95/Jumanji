@@ -55,7 +55,8 @@ public class GrabbleRope : OVRGrabbable
 
             print("Here");
             //hangerSript.HangingPos = hangerPosition;
-            hangerPosition = hangerSript.HangingPos;
+            hangerPosition = other.GetComponent<HangerScript>().HangingPos;
+            //hangerPosition = hangerSript.HangingPos;
             inPlace = true;
         }
     }
