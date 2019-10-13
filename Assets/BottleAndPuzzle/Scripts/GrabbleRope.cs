@@ -7,16 +7,17 @@ public class GrabbleRope : OVRGrabbable
     public HangerScript hangerSript;
     bool inPlace;
     Transform hangerPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
@@ -27,40 +28,45 @@ public class GrabbleRope : OVRGrabbable
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         base.GrabEnd(linearVelocity, angularVelocity);
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (myType == Type.Rope)
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+
+        if (inPlace)
         {
-            if (other.tag == "HangerPositionPlace")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Hanger")
-                            return;
-                    }
-                }
-
-                hangerSript.HangingPos = hangerPosition;
-                hangerPosition = other.transform;
-                inPlace = true;
-            }
+            rb.isKinematic = true;
+            transform.position = hangerPosition.position;
         }
     }
-    private void OnTriggerExit (Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (myType == Type.Rope)
+        if (other.tag == "HangerPositionPlace")
         {
-            if (other.tag == "HangerPositionPlace")
+            Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+
+            foreach (var item in overlappedColliders)
             {
-                hangerPosition = null;
-                inPlace = false;
+                if (item != GetComponent<Collider>())
+                {
+                    if (item.tag == "Hanger")
+                        return;
+                }
             }
+
+            print("Here");
+            //hangerSript.HangingPos = hangerPosition;
+            hangerPosition = hangerSript.HangingPos;
+            inPlace = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "HangerPositionPlace")
+        {
+            print("Here2");
+            hangerPosition = null;
+            inPlace = false;
         }
     }
 }

@@ -130,17 +130,6 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
-
-
-        if (inPlace)
-        {
-            rb.isKinematic = true;
-            transform.position = hangerPosition.position;
-        }
-        else
-        {
-            // transform.position = originalPos.position;
-        }
     }
 
     void Awake()
@@ -173,23 +162,23 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
-    public enum Type
-    {
-        Rope,
-        Hanger,
-        Bottle
-    }
+    //public enum Type
+    //{
+    //    Rope,
+    //    Hanger,
+    //    Bottle
+    //}
 
-    public Type myType;
+    //public Type myType;
 
-    bool inPlace;
+    //bool inPlace;
 
-    Transform hangerPosition;
-    Transform originalPos;
+    //Transform hangerPosition;
+    //Transform originalPos;
 
-    public Transform hangingPosition;
-    public GameObject BottleRing;
-    public Transform BottleParent;
+    //public Transform hangingPosition;
+    //public GameObject BottleRing;
+    //public Transform BottleParent;
 
 
 
@@ -219,27 +208,27 @@ public class OVRGrabbable : MonoBehaviour
         //    }
         //}
 
-        if (myType == Type.Bottle)
-        {
-            if (other.tag == "Rope")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+        //if (myType == Type.Bottle)
+        //{
+        //    if (other.tag == "Rope")
+        //    {
+        //        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
 
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Bottle")
-                            return;
-                    }
-                }
+        //        foreach (var item in overlappedColliders)
+        //        {
+        //            if (item != GetComponent<Collider>())
+        //            {
+        //                if (item.tag == "Bottle")
+        //                    return;
+        //            }
+        //        }
 
-                BottleRing.GetComponent<MeshRenderer>().enabled = true;
-                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-                inPlace = true;
-                transform.parent = BottleParent;
-            }
-        }
+        //        BottleRing.GetComponent<MeshRenderer>().enabled = true;
+        //        hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
+        //        inPlace = true;
+        //        transform.parent = BottleParent;
+        //    }
+        //}
 
     }
 
@@ -254,14 +243,14 @@ public class OVRGrabbable : MonoBehaviour
         //        inPlace = false;
         //    }
         //}
-        if (myType == Type.Bottle)
-        {
-            if (other.tag == "Rope")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
+        //if (myType == Type.Bottle)
+        //{
+        //    if (other.tag == "Rope")
+        //    {
+        //        hangerPosition = null;
+        //        inPlace = false;
+        //    }
+        //}
     }
 
     private void OnDrawGizmos()
