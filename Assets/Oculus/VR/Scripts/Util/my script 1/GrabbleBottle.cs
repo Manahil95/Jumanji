@@ -8,6 +8,8 @@ public class GrabbleBottle : OVRGrabbable
     public int ID;
     Transform hangerPosition;
 
+    GameObject rope;
+
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         base.GrabEnd(linearVelocity, angularVelocity);
@@ -17,16 +19,25 @@ public class GrabbleBottle : OVRGrabbable
         if (inPlace)
         {
             rb.isKinematic = true;
-            transform.position = hangerPosition.position;
+            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = true;
+            hangerPosition = rope.GetComponent<GrabbleRope>().hangingPosition;
+            transform.parent = rope.GetComponent<GrabbleRope>().BottleParent[ID];
+            transform.localPosition = hangerPosition.localPosition;
+        }
+        else
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Rope")
         {
-            Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
+            rope = other.transform.parent.gameObject;
+
+            Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.3f);
 
             foreach (var item in overlappedColliders)
             {
@@ -37,12 +48,20 @@ public class GrabbleBottle : OVRGrabbable
                 }
             }
 
-            other.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = true;
-            hangerPosition = other.GetComponent<GrabbleRope>().hangingPosition;
-            transform.parent = other.GetComponent<GrabbleRope>().BottleParent[ID];
             inPlace = true;
         }
 
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Rope")
+        {
+            GameObject rope = other.transform.parent.gameObject;
+            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = false;
+            hangerPosition = null;
+            transform.parent = null;
+            inPlace = false;
+        }
+    }
 }

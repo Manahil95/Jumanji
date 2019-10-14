@@ -44,7 +44,6 @@ public class GrabbleRope : OVRGrabbable
                 }
             }
 
-            print("Here");
             hangerPosition = other.GetComponent<HangerScript>().HangingPos;
             inPlace = true;
         }
@@ -54,7 +53,6 @@ public class GrabbleRope : OVRGrabbable
     {
         if (other.tag == "HangerPositionPlace")
         {
-            print("Here2");
             hangerPosition = null;
             inPlace = false;
         }

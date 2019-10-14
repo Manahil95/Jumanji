@@ -161,76 +161,12 @@ public class OVRGrabbable : MonoBehaviour
             m_grabbedBy.ForceRelease(this);
         }
     }
-
-    //public enum Type
-    //{
-    //    Rope,
-    //    Hanger,
-    //    Bottle
-    //}
-
-    //public Type myType;
-
-    //bool inPlace;
-
-    //Transform hangerPosition;
-    //Transform originalPos;
-
-    //public Transform hangingPosition;
-    //public GameObject BottleRing;
-    //public Transform BottleParent;
-
-
-
-
     private void OnTriggerStay(Collider other)
     {
-        //BottleRing.GetComponent<MeshRenderer>().enabled = false;
-       
-
-        //if (myType == Type.Rope)
-        //{
-        //    if (other.tag == "Hanger")
-        //    {
-        //        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-        //        foreach (var item in overlappedColliders)
-        //        {
-        //            if (item != GetComponent<Collider>())
-        //            {
-        //                if (item.tag == "Rope")
-        //                    return;
-        //            }
-        //        }
-
-        //        hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-        //        inPlace = true;
-        //    }
-        //}
-
-        
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-       
-        //if (myType == Type.Rope)
-        //{
-        //    if (other.tag == "Hanger")
-        //    {
-        //        hangerPosition = null;
-        //        inPlace = false;
-        //    }
-        //}
-        //if (myType == Type.Bottle)
-        //{
-        //    if (other.tag == "Rope")
-        //    {
-        //        hangerPosition = null;
-        //        inPlace = false;
-        //    }
-        //}
     }
 
     private void OnDrawGizmos()
