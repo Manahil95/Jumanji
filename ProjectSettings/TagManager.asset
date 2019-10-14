@@ -26,6 +26,8 @@ TagManager:
   - LeftHand
   - RightHand
   - Bord
+  - Dice 1
+  - Dice2
   layers:
   - Default
   - TransparentFX

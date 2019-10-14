@@ -130,18 +130,6 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
-
-
-        if (inPlace)
-        {
-            rb.isKinematic = true;
-            transform.position = hangerPosition.position;
-            transform.rotation = Quaternion.identity;
-        }
-        else
-        {
-            // transform.position = originalPos.position;
-        }
     }
 
     void Awake()
@@ -174,119 +162,11 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
-    public enum Type
-    {
-        Rope,
-        Hanger,
-        Bottle
-    }
-
-    public Type myType;
-
-    bool inPlace;
-
-    Transform hangerPosition;
-    Transform originalPos;
-
-    public Transform hangingPosition;
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (myType == Type.Hanger)
-        {
-            if (other.tag == "HangerPositioPlace")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Hanger")
-                            return;
-                    }
-                }
-
-                hangerPosition = other.transform;
-                inPlace = true;
-            }
-        }
-
-        if (myType == Type.Rope)
-        {
-            if (other.tag == "Hanger")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Rope")
-                            return;
-                    }
-                }
-
-                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-                inPlace = true;
-            }
-        }
-
-        if (myType == Type.Bottle)
-        {
-            if (other.tag == "Rope")
-            {
-                Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-                foreach (var item in overlappedColliders)
-                {
-                    if (item != GetComponent<Collider>())
-                    {
-                        if (item.tag == "Bottle")
-                            return;
-                    }
-                }
-
-                hangerPosition = other.GetComponent<OVRGrabbable>().hangingPosition;
-                inPlace = true;
-            }
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (myType == Type.Hanger)
-        {
-            if (other.tag == "HangerPositioPlace")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
-        if (myType == Type.Rope)
-        {
-            if (other.tag == "Hanger")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
-        if (myType == Type.Bottle)
-        {
-            if (other.tag == "Rope")
-            {
-                hangerPosition = null;
-                inPlace = false;
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 0.1f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, 0.1f);
+    //}
 
 
     private void Update()
