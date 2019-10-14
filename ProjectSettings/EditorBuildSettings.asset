@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/jumanji project_alex_house2.unity
+    guid: 00b4f7021b7915647b8f0d2d6e448996
   m_configObjects: {}
