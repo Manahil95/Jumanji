@@ -4,11 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Rotater
-  - Wall
-  - winPoint
-  - Bottle
   - Rope
   - Hanger
   - Hanger Place
@@ -29,39 +24,15 @@ TagManager:
   - Joystick
   - coin
   - Joystick1
+  - Bottle
+  - HangerPositionPlace
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
