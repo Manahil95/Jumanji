@@ -23,9 +23,9 @@ public class DiceScript : MonoBehaviour
         {
             DiceNumberTextScript.diceNumber1 = 0;
             DiceNumberTextScript.diceNumber2 = 0;
-            float dirX = Random.Range(-0.13f, 0.13f);
-            float dirY = Random.Range(0, 0.05f);
-            float dirZ = Random.Range(-0.18f, 0.18f);
+            float dirX = Random.Range(0, 500);
+            float dirY = Random.Range(0, 500);
+            float dirZ = Random.Range(0, 500);
             transform.position = new Vector3(0, 2, 0);
             transform.rotation = Quaternion.identity;
             rb.AddForce(transform.up * 100);
