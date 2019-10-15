@@ -3,7 +3,32 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
+  - Rotater
+  - Wall
+  - winPoint
+  - Bottle
+  - Rope
+  - Hanger
+  - Hanger Place
+  - HangerPositioPlace
+  - winbottlePlace
+  - MoveRight
+  - MoveLeft
+  - Walk
+  - Enemy
+  - CloseButton
+  - WalkBack
+  - Target
+  - moveGround
+  - hand
+  - LeftHand
+  - RightHand
+  - MazeWall
+  - Joystick
+  - coin
+  - Joystick1
   layers:
   - Default
   - TransparentFX
