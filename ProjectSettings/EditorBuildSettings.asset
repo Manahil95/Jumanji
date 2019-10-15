@@ -23,4 +23,7 @@ EditorBuildSettings:
     path: Assets/BottleAndPuzzle/Scenes/jumanji alex house.unity
     guid: d20efdc78adaa964b8742ed07549f50f
 
+  - enabled: 1
+    path: Assets/JumanjiBord/JmanjiBord.unity
+    guid: 336b036fd9a01174babaacb95126a0ff
   m_configObjects: {}

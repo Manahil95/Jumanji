@@ -26,6 +26,9 @@ TagManager:
   - Joystick1
   - Bottle
   - HangerPositionPlace
+  - Bord
+  - Dice 1
+  - Dice2
   layers:
   - Default
   - TransparentFX
