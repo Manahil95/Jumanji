@@ -40,20 +40,20 @@ public class RotateController : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        YRotation += 90;
-        targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+    //private void OnMouseDown()
+    //{
+    //    YRotation += 90;
+    //    targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
 
-        foreach (var item in WaterConnector)
-        {
-            item.YRotation += 90;
-            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
+    //    foreach (var item in WaterConnector)
+    //    {
+    //        item.YRotation += 90;
+    //        item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
 
-        }
+    //    }
 
-        InvokeRepeating("RotateObjects", 0, Time.deltaTime);
-    }
+    //    InvokeRepeating("RotateObjects", 0, Time.deltaTime);
+    //}
 
     public Vector3 crossVec;
     public float myYRotation;
