@@ -29,6 +29,11 @@ TagManager:
   - Bord
   - Dice 1
   - Dice2
+  - ONOff
+  - Unloked
+  - Water
+  - WaterStartingCollider
+  - WaterExetCollider
   layers:
   - Default
   - TransparentFX
