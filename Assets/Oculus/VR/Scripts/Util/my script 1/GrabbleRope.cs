@@ -7,7 +7,7 @@ public class GrabbleRope : OVRGrabbable
     public HangerScript hangerSript;
     bool inPlace;
     Transform hangerPosition;
-    public Transform hangingPosition;
+    public List<Transform> hangingPosition;
 
     public List<GameObject> BottleRing;
     public List<Transform> BottleParent;
