@@ -5,7 +5,6 @@ using UnityEngine;
 public class AvatarScript : MonoBehaviour
 {
     public GameObject moveGround;
-    public GameObject Target;
     public GameObject AvatarPosition;
     public GameObject xWall;
     public GameObject xWallTarget;

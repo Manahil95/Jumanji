@@ -5,11 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Maze/Scene/Maze.unity
-    guid: 9c047e097165da240a427fd41ac26b52
   - enabled: 0
-    path: Assets/Scenes/Cave.unity
+    path: Assets/umaima/scene/Cave.unity
     guid: 608007fbfa02c5d4c8706f1f47c7bed7
   - enabled: 0
     path: Assets/BottleAndPuzzle/Scenes/Bottle.unity
@@ -18,15 +15,6 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/BottleAndPuzzle/Scenes/jumanji alex house.unity
-    guid: d20efdc78adaa964b8742ed07549f50f
-  - enabled: 1
-    path: Assets/JumanjiBord/JmanjiBord.unity
-    guid: 336b036fd9a01174babaacb95126a0ff
-  - enabled: 0
-    path: Assets/Puzzles/WaterRiddle.unity
-    guid: c458cbf4cc4e2ca4aa17fc42b61e112f
-  - enabled: 1
-    path: Assets/Puzzles/WaterRiddle2.unity
-    guid: ac7d71946750351469777194e8d7e60a
+    path: Assets/Scenes/Maze/The Maze Zainab.unity
+    guid: d67d4f04ac7428a4585469d2b75b7f21
   m_configObjects: {}
