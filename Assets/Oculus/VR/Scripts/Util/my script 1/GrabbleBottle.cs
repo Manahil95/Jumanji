@@ -10,6 +10,11 @@ public class GrabbleBottle : OVRGrabbable
 
     GameObject rope;
 
+    public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
+    {
+        base.GrabBegin(hand, grabPoint);
+    }
+
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         base.GrabEnd(linearVelocity, angularVelocity);
@@ -20,12 +25,17 @@ public class GrabbleBottle : OVRGrabbable
         {
             rb.isKinematic = true;
             rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = true;
+            print(rope.GetComponent<GrabbleRope>().BottleRing[ID]);
             hangerPosition = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
-            transform.parent = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
-            transform.localPosition = hangerPosition.localPosition;
+            transform.parent = hangerPosition;
+            transform.localPosition = Vector3.zero;
         }
         else
         {
+            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = false;
+            hangerPosition = null;
+            transform.parent = null;
+
             rb.isKinematic = false;
             rb.useGravity = true;
         }
@@ -50,17 +60,12 @@ public class GrabbleBottle : OVRGrabbable
 
             inPlace = true;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Rope")
         {
-            GameObject rope = other.transform.parent.gameObject;
-            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = false;
-            hangerPosition = null;
-            transform.parent = null;
             inPlace = false;
         }
     }
