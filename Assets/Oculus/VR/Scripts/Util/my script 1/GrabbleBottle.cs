@@ -21,7 +21,7 @@ public class GrabbleBottle : OVRGrabbable
             rb.isKinematic = true;
             rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = true;
             hangerPosition = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
-            transform.parent = rope.GetComponent<GrabbleRope>().BottleParent[ID];
+            transform.parent = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
             transform.localPosition = hangerPosition.localPosition;
         }
         else

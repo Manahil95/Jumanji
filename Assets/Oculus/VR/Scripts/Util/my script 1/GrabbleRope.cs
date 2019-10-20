@@ -10,7 +10,7 @@ public class GrabbleRope : OVRGrabbable
     public List<Transform> hangingPosition;
 
     public List<GameObject> BottleRing;
-    public List<Transform> BottleParent;
+
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
         base.GrabBegin(hand, grabPoint);
