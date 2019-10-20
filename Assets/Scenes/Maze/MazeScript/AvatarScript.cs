@@ -52,7 +52,7 @@ public class AvatarScript : MonoBehaviour
     {
         if (other.tag == "CloseButton")
         {
-            moveGround.GetComponent<Animator>().SetBool("Close", true);
+            moveGround.GetComponent<Animator>().SetBool("MoveBridge", true);
             //InvokeRepeating("MoveGround", 0, Time.deltaTime);
         }
     }
