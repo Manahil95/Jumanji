@@ -112,7 +112,7 @@ public class WaterMovement : MonoBehaviour
         if (other.tag == "WaterExetCollider")
         {
             waterScale.InvokeRepeating("ScaleWater", 0, Time.deltaTime);
-            //InvokeRepeating("FillWaterTank", 0, Time.deltaTime);
+            
         }
     }
 
