@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AvatarScript : MonoBehaviour
 {
-    public GameObject moveGround;
+    public GameObject Bridge;
     public GameObject AvatarPosition;
     public GameObject xWall;
     public GameObject xWallTarget;
@@ -42,7 +42,7 @@ public class AvatarScript : MonoBehaviour
             Destroy(collision.gameObject);
             score += 1;
 
-            if (score >= 5)
+            if (score >= 4)
             {
                 InvokeRepeating("openDoor", 0, Time.deltaTime);
             }
@@ -52,7 +52,7 @@ public class AvatarScript : MonoBehaviour
     {
         if (other.tag == "CloseButton")
         {
-            moveGround.GetComponent<Animator>().SetBool("MoveBridge", true);
+            Bridge.GetComponent<Animator>().SetBool("MoveBridge", true);
             //InvokeRepeating("MoveGround", 0, Time.deltaTime);
         }
     }
