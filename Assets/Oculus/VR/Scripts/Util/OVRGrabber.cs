@@ -159,7 +159,6 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-
     void OnTriggerEnter(Collider otherCollider)
     {
         if (otherCollider.tag == "Rotater")
@@ -178,16 +177,16 @@ public class OVRGrabber : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Rotater")
-        {
-            if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
-            {
-                other.GetComponent<RotateController>().ActivateRotator();
-            }
-        }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "Rotater")
+    //    {
+    //        if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+    //        {
+    //            other.GetComponent<RotateController>().ActivateRotator();
+    //        }
+    //    }
+    //}
 
     void OnTriggerExit(Collider otherCollider)
     {
