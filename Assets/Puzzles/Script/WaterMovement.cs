@@ -52,12 +52,12 @@ public class WaterMovement : MonoBehaviour
     void MoveWaterSource()
     {
         temp = transform.localScale;
-        if (temp.x < 2.3f)
+        if (temp.x < 1.6f)
         {
             temp.x += Time.deltaTime;
             transform.localScale = temp;
         }
-        else if (temp.x >= 2.3f)
+        else if (temp.x >= 1.6f)
         {
             CancelInvoke();
         }
