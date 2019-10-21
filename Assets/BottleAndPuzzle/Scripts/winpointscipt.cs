@@ -6,13 +6,15 @@ public class winpointscipt : MonoBehaviour
 {
     public GameObject UI;
     int i = 0;
+
     public void Increment()
     {
         i++;
-        if (i == 3)
+        if (i >= 4)
         {
             UI.SetActive(true);
-        }else
+        }
+        else
         {
             UI.SetActive(false);
         }

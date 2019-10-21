@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class winbottlepointscript : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "winbottlePlace")
         {
