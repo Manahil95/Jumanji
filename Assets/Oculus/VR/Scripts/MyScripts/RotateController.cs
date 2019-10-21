@@ -48,7 +48,7 @@ public class RotateController : MonoBehaviour
         foreach (var item in WaterConnector)
         {
             item.YRotation += 90;
-            item.TargetRotation = Quaternion.Euler(90, item.YRotation, 164.618f);
+            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0);
 
         }
 
@@ -98,7 +98,7 @@ public class RotateController : MonoBehaviour
         {
             item.Moving = true;
             item.YRotation += 90;
-            item.TargetRotation = Quaternion.Euler(90, item.YRotation, 164.618f);
+            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0);
         }
 
         Invoke("StopRotatingConnectors", 1);
