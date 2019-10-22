@@ -34,6 +34,7 @@ TagManager:
   - Water
   - WaterStartingCollider
   - WaterExetCollider
+  - Rotater
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,8 @@ TagManager:
   - 
   - Player
   - Props
+  - WaterRotator
+
   - 
   - 
   - 

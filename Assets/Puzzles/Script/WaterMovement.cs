@@ -7,19 +7,20 @@ public class WaterMovement : MonoBehaviour
 {
     public WaterTank myWaterTank;
     public WaterTank NextWaterTank;
-    public WaterScale waterScale;
     public bool WaterStartingPoint;
     public bool CanFlow;
-
+    public float WaterSize;
+    public AudioSource waterFlowSound;
     public Action<bool> FlowWater;
-
     Vector3 temp;
 
     // Start is called before the first frame update
     void Start()
     {
+        waterFlowSound = GetComponent<AudioSource>();
+
         if (WaterStartingPoint)
-            InvokeRepeating("MoveWaterSource", 0, Time.deltaTime);
+            InvokeRepeating("FillWater", 0, Time.deltaTime);
         else
         {
             FlowWater += StartFlowing;
@@ -43,30 +44,33 @@ public class WaterMovement : MonoBehaviour
 
     void WaterFlowing()
     {
-        if (myWaterTank.Unlocked && CanFlow)
-            MoveWaterSource();
-        else
-            RemoveWater();
+        //if (!myWaterTank.Moving)
+        //{
+            if (myWaterTank.Unlocked && CanFlow)
+                FillWater();
+            else
+                EmptyeWater();
+        //}
     }
 
-    void MoveWaterSource()
+    void FillWater()
     {
+        
         temp = transform.localScale;
-        if (temp.x < 2.3f)
+        if (temp.x < WaterSize)
         {
             temp.x += Time.deltaTime;
             transform.localScale = temp;
+            waterFlowSound.Play();
         }
-        else if (temp.x >= 2.3f)
+        else if (temp.x >= WaterSize)
         {
             CancelInvoke();
         }
     }
 
-    void RemoveWater()
+    void EmptyeWater()
     {
-        //if (!myWaterTank.Moving)
-        //{
         temp = transform.localScale;
         if (temp.x > 0)
         {
@@ -77,25 +81,7 @@ public class WaterMovement : MonoBehaviour
         {
             CancelInvoke();
         }
-        //}
     }
-
-    //void FillWaterTank()
-    //{
-    //    temp = transform.localScale;
-    //    if (temp.x < 2.5f)
-    //    {
-    //        temp.x += Time.deltaTime;
-    //        temp.y += Time.deltaTime;
-    //        temp.z += Time.deltaTime;
-    //        transform.localScale = temp;
-    //    }
-    //    else if (temp.x >= 2.5f)
-    //    {
-    //        CancelInvoke();
-    //    }
-    //}
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -105,14 +91,11 @@ public class WaterMovement : MonoBehaviour
 
             if (NextWaterTank.unlocked != null)
                 NextWaterTank.unlocked.Invoke(true);
-            //print(name);
-            //print(Time.time + " : " + NextWaterTank.name);
         }
 
         if (other.tag == "WaterExetCollider")
         {
-            waterScale.InvokeRepeating("ScaleWater", 0, Time.deltaTime);
-            //InvokeRepeating("FillWaterTank", 0, Time.deltaTime);
+            other.GetComponent<FillTank>().InvokeRepeating("RaiseWater", 0, Time.deltaTime);
         }
     }
 
@@ -124,8 +107,6 @@ public class WaterMovement : MonoBehaviour
 
             if (NextWaterTank.unlocked != null)
                 NextWaterTank.unlocked.Invoke(false);
-            //print(name);
-            //print(Time.time + " : " + NextWaterTank.name);
         }
     }
 }

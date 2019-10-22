@@ -11,12 +11,10 @@ public class RotateController : MonoBehaviour
     //Rigidbody rb;
 
     float time;
-    bool canMove = false;
+    bool canMove = true;
     float YRotation;
 
     public Vector3 handInitialPos;
-    Vector3 handCurrentPos;
-
     public Transform hands;
 
     public float[] EndRotation;
@@ -40,41 +38,32 @@ public class RotateController : MonoBehaviour
         }
     }
 
-    //private void OnMouseDown()
-    //{
-    //    YRotation += 90;
-    //    targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+    private void OnMouseDown()
+    {
+        YRotation += 90;
+        targetRotation = Quaternion.Euler(-90, YRotation, 0.0f);
 
-    //    foreach (var item in WaterConnector)
-    //    {
-    //        item.YRotation += 90;
-    //        item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
+        foreach (var item in WaterConnector)
+        {
+            item.YRotation += 90;
+            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0);
 
-    //    }
+        }
 
-    //    InvokeRepeating("RotateObjects", 0, Time.deltaTime);
-    //}
-
-    public Vector3 crossVec;
-    public float myYRotation;
+        InvokeRepeating("RotateObjects", 0, Time.deltaTime);
+    }
 
     public void ActivateRotator()
     {
         if (canMove)
         {
-            handCurrentPos = hands.position;
-            crossVec = Vector3.Cross(new Vector3(handInitialPos.x, 0, handInitialPos.z), new Vector3(handCurrentPos.x, 0, handCurrentPos.z));
-            //if (crossVec.y > 0)
-            //{
-            YRotation += Vector3.Angle(new Vector3(handCurrentPos.x, 0, handCurrentPos.z), new Vector3(handInitialPos.x, 0, handInitialPos.z));
-            targetRotation = Quaternion.Euler(0, YRotation, 0.0f);
+            YRotation += Vector3.Angle(new Vector3(hands.position.x, 0, hands.position.z), new Vector3(handInitialPos.x, 0, handInitialPos.z));
+            targetRotation = Quaternion.Euler(-90, YRotation, 0.0f);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
-            print(YRotation);
 
-            myYRotation = transform.rotation.y;
             if (Direction)
             {
-                if (transform.rotation.y >= currentEndRotation)
+                if (Mathf.Abs(transform.rotation.y) >= currentEndRotation)
                 {
                     canMove = false;
                     Invoke("StartRotationConnectors", 0);
@@ -82,13 +71,12 @@ public class RotateController : MonoBehaviour
             }
             else
             {
-                if (transform.rotation.y <= currentEndRotation)
+                if (Mathf.Abs(transform.rotation.y) <= currentEndRotation)
                 {
                     canMove = false;
                     Invoke("StartRotationConnectors", 0);
                 }
             }
-            //}
         }
     }
 
@@ -98,7 +86,7 @@ public class RotateController : MonoBehaviour
         {
             item.Moving = true;
             item.YRotation += 90;
-            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0.0f);
+            item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0);
         }
 
         Invoke("StopRotatingConnectors", 1);
@@ -131,5 +119,7 @@ public class RotateController : MonoBehaviour
             Direction = false;
 
         currentEndRotation = EndRotation[endRotationIndex];
+        print(currentEndRotation);
+        print(transform.rotation);
     }
 }
