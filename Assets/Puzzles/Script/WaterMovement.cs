@@ -7,19 +7,18 @@ public class WaterMovement : MonoBehaviour
 {
     public WaterTank myWaterTank;
     public WaterTank NextWaterTank;
-    public WaterScale waterScale;
     public bool WaterStartingPoint;
     public bool CanFlow;
-
     public float WaterSize;
-
+    public AudioSource waterFlowSound;
     public Action<bool> FlowWater;
-
     Vector3 temp;
 
     // Start is called before the first frame update
     void Start()
     {
+        waterFlowSound = GetComponent<AudioSource>();
+
         if (WaterStartingPoint)
             InvokeRepeating("FillWater", 0, Time.deltaTime);
         else
@@ -62,6 +61,7 @@ public class WaterMovement : MonoBehaviour
         {
             temp.x += Time.deltaTime;
             transform.localScale = temp;
+            waterFlowSound.Play();
         }
         else if (temp.x >= WaterSize)
         {
@@ -95,8 +95,7 @@ public class WaterMovement : MonoBehaviour
 
         if (other.tag == "WaterExetCollider")
         {
-            waterScale.InvokeRepeating("ScaleWater", 0, Time.deltaTime);
-            
+            other.GetComponent<FillTank>().InvokeRepeating("RaiseWater", 0, Time.deltaTime);
         }
     }
 
