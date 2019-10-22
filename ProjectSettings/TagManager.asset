@@ -34,13 +34,40 @@ TagManager:
   - Water
   - WaterStartingCollider
   - WaterExetCollider
+  - Rotater
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - 
   - Water
   - UI
-  - PostProcessing 
+  - 
+  - 
+  - Player
+  - WaterRotator
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
