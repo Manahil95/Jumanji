@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/jumanji project_alex_house2.unity
     guid: 00b4f7021b7915647b8f0d2d6e448996
   - enabled: 0
@@ -23,7 +23,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Puzzles/WaterRiddle2.unity
     guid: ac7d71946750351469777194e8d7e60a
-  - enabled: 1
+  - enabled: 0
     path: Assets/umaima/scene/water mazze.unity
     guid: a3c07bc3db0c184409b85c82204fe555
+  - enabled: 1
+    path: Assets/Main Menu/Scene/Menu.unity
+    guid: 4054c2274f5273f47b62529a9375a2ac
   m_configObjects: {}
