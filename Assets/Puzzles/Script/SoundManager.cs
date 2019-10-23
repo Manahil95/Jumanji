@@ -57,15 +57,15 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             default:
-               return true;
+                return true;
             case SoundName.ControlStikRotate:
-                if(soundTimerDictionary.ContainsKey(sound))
+                if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
                     float delaykMax = 0.05f;
-                    if(lastTimePlayed + delaykMax < Time.deltaTime)
+                    if (lastTimePlayed + delaykMax < Time.time)
                     {
-                        soundTimerDictionary[sound] = Time.deltaTime;
+                        soundTimerDictionary[sound] = Time.time;
                         return true;
                     }
                     else
@@ -83,9 +83,9 @@ public class SoundManager : MonoBehaviour
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
                     float delaykMax = 0.05f;
-                    if (lastTimePlayed + delaykMax < Time.deltaTime)
+                    if (lastTimePlayed + delaykMax < Time.time)
                     {
-                        soundTimerDictionary[sound] = Time.deltaTime;
+                        soundTimerDictionary[sound] = Time.time;
                         return true;
                     }
                     else

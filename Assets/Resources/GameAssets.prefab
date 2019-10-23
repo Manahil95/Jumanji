@@ -52,10 +52,10 @@ MonoBehaviour:
     Volume: 0.4
   - sound: 2
     audioClip: {fileID: 8300000, guid: e6e68712f55ffff4f98e519c9e68e0cc, type: 3}
-    Volume: 0.7
+    Volume: 0.6
   - sound: 3
     audioClip: {fileID: 8300000, guid: 58d6c10eca3ff6f4a9cb375a876b379b, type: 3}
-    Volume: 0.5
+    Volume: 0.4
   - sound: 4
     audioClip: {fileID: 8300000, guid: dfa1d4774ff262845bc277d0ef1ef1e2, type: 3}
     Volume: 0.7

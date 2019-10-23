@@ -40,7 +40,6 @@ public class RotateController : MonoBehaviour
         foreach (var item in WaterConnector)
         {
             item.transform.rotation = Quaternion.RotateTowards(item.transform.rotation, item.TargetRotation, 100 * Time.deltaTime);
-            SoundManager.Instance.PlaySound(SoundManager.SoundName.WaterConnectorRotate);
         }
         
     }
@@ -50,6 +49,11 @@ public class RotateController : MonoBehaviour
         YRotation += 90;
         targetRotation = Quaternion.Euler(-90, YRotation, 0.0f);
         SoundManager.Instance.PlaySound(SoundManager.SoundName.ControlStikRotate);
+
+        foreach (var item in WaterConnector)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.SoundName.WaterConnectorRotate);
+        }
 
         foreach (var item in WaterConnector)
         {
@@ -84,6 +88,7 @@ public class RotateController : MonoBehaviour
                     Invoke("StartRotationConnectors", 0);
                 }
             }
+            SoundManager.Instance.PlaySound(SoundManager.SoundName.ControlStikRotate);
         }
     }
 
@@ -94,6 +99,7 @@ public class RotateController : MonoBehaviour
             item.Moving = true;
             item.YRotation += 90;
             item.TargetRotation = Quaternion.Euler(0, item.YRotation, 0);
+            SoundManager.Instance.PlaySound(SoundManager.SoundName.WaterConnectorRotate);
         }
 
         Invoke("StopRotatingConnectors", 1);

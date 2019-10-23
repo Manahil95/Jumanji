@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerSounds : OVRPlayerController
 {
 
-    public override void UpdateMovement()
-    {
-        SoundManager.Instance.PlaySound(SoundManager.SoundName.PlayerMove);
-        base.UpdateMovement();
-    }
+    //public override void UpdateMovement()
+    //{
+    //    SoundManager.Instance.PlaySound(SoundManager.SoundName.PlayerMove);
+    //    base.UpdateMovement();
+    //}
 }
