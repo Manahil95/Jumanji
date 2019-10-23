@@ -10,15 +10,12 @@ public class WaterMovement : MonoBehaviour
     public bool WaterStartingPoint;
     public bool CanFlow;
     public float WaterSize;
-    public AudioSource waterFlowSound;
     public Action<bool> FlowWater;
     Vector3 temp;
 
     // Start is called before the first frame update
     void Start()
     {
-        waterFlowSound = GetComponent<AudioSource>();
-
         if (WaterStartingPoint)
             InvokeRepeating("FillWater", 0, Time.deltaTime);
         else
@@ -32,6 +29,7 @@ public class WaterMovement : MonoBehaviour
     {
         myWaterTank.Unlocked = unlocked;
         CancelInvoke();
+        PlayWaterSound();
         InvokeRepeating("WaterFlowing", 0, Time.deltaTime);
     }
 
@@ -39,29 +37,31 @@ public class WaterMovement : MonoBehaviour
     {
         CanFlow = canFlow;
         CancelInvoke();
+        PlayWaterSound();
         InvokeRepeating("WaterFlowing", 0, Time.deltaTime);
+    }
+
+    void PlayWaterSound()
+    {
+        if (myWaterTank.Unlocked && CanFlow)
+            SoundManager.Instance.PlaySound(SoundManager.SoundName.WaterFlow);
     }
 
     void WaterFlowing()
     {
-        //if (!myWaterTank.Moving)
-        //{
-            if (myWaterTank.Unlocked && CanFlow)
-                FillWater();
-            else
-                EmptyeWater();
-        //}
+        if (myWaterTank.Unlocked && CanFlow)
+            FillWater();      
+        else
+          EmptyeWater();
     }
 
     void FillWater()
     {
-        
         temp = transform.localScale;
         if (temp.x < WaterSize)
         {
             temp.x += Time.deltaTime;
             transform.localScale = temp;
-            waterFlowSound.Play();
         }
         else if (temp.x >= WaterSize)
         {
@@ -96,6 +96,7 @@ public class WaterMovement : MonoBehaviour
         if (other.tag == "WaterExetCollider")
         {
             other.GetComponent<FillTank>().InvokeRepeating("RaiseWater", 0, Time.deltaTime);
+            SoundManager.Instance.PlaySound(SoundManager.SoundName.FillTank);
         }
     }
 
