@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
-                    float delaykMax = 0.05f;
+                    float delaykMax = 03.86f;
                     if (lastTimePlayed + delaykMax < Time.time)
                     {
                         soundTimerDictionary[sound] = Time.time;
@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
-                    float delaykMax = 0.05f;
+                    float delaykMax = 04.6f;
                     if (lastTimePlayed + delaykMax < Time.time)
                     {
                         soundTimerDictionary[sound] = Time.time;

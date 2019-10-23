@@ -82,7 +82,9 @@ public class RotateController : MonoBehaviour
             }
             else
             {
-                if (Mathf.Abs(transform.rotation.y) <= currentEndRotation)
+                print(transform.rotation.y);
+                print(currentEndRotation);
+                if (Mathf.Abs(transform.rotation.y) <= currentEndRotation + 0.01f)
                 {
                     canMove = false;
                     Invoke("StartRotationConnectors", 0);
@@ -132,7 +134,5 @@ public class RotateController : MonoBehaviour
             Direction = false;
 
         currentEndRotation = EndRotation[endRotationIndex];
-        print(currentEndRotation);
-        print(transform.rotation);
     }
 }
