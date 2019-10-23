@@ -6,6 +6,7 @@ public class MazeMoveScript : MonoBehaviour
 {
    
     public Transform pointA, pointB;
+    public GameObject coin;
     public float speed;
     private bool direction;
     float previousTime;
@@ -24,6 +25,8 @@ public class MazeMoveScript : MonoBehaviour
             direction = false;
         Rotate();
         previousTime = time;
+
+        coin.transform.Rotate(0, 5, 0);
     }   
     //private void Move()
     //{

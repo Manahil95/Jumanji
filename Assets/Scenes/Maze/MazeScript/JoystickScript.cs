@@ -36,7 +36,7 @@ public class JoystickScript : OVRGrabber
                 targetRotation = Quaternion.Euler(zAngle, 0, 0);
                 m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.up * Time.deltaTime * 0.7f);
+                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.down * Time.deltaTime * 0.7f);
 
             }
             else if (z < -0.1f)
@@ -45,7 +45,7 @@ public class JoystickScript : OVRGrabber
                 targetRotation = Quaternion.Euler(-zAngle, 0, 0);
                 m_grabbedObj.grabbedRigidbody.transform.rotation = Quaternion.RotateTowards(m_grabbedObj.grabbedRigidbody.transform.rotation, targetRotation, 100 * Time.deltaTime);
 
-                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.down * Time.deltaTime * 0.7f);
+                Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.up * Time.deltaTime * 0.7f);
             }
         }
         else if (Mathf.Abs(x) > Mathf.Abs(z))

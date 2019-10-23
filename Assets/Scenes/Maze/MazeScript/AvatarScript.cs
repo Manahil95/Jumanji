@@ -42,7 +42,7 @@ public class AvatarScript : MonoBehaviour
             Destroy(collision.gameObject);
             score += 1;
 
-            if (score >= 4)
+            if (score >= 5)
             {
                 InvokeRepeating("openDoor", 0, Time.deltaTime);
             }
