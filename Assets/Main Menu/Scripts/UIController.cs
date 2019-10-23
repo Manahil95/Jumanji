@@ -1,45 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    public AudioSource Drums;
     public GameObject JumanjiTitlePanel;
-    public Animation JumanjiTitleAnimation;
-    private float open = 5.0f;
-    private float delete = 10.0f;
+    private float open = 10.0f;
+    private float delete = 15.0f;
 
     public GameObject JumanjiwordPanel;
-    private float OpenumanjiwordPanel = 11.0f;
-    private float DeleteumanjiwordPanel = 20.0f;
+    private float OpenumanjiwordPanel = 16.0f;
+    public AudioSource Jumanjiword;
+    string JumanjiText = "A GAME FOR THOSE WHO SEEK TO FIND A WAY TO LEAVE THEIR WORLD BEHIND";
+    public TextMeshProUGUI Text;
+    string[] jumangiTextList;
+    int i = -1;
 
+    public GameObject Menu;
     void Start()
     {
-       Invoke("ShowJumanjiTitlePanel", open);
-       Invoke("HideJumanjiTitlePanel", delete);
+        jumangiTextList = JumanjiText.Split(' ');
+        Drums.Play();
+        Invoke("ShowJumanjiTitlePanel", open);
+        Invoke("HideJumanjiTitlePanel", delete);
+        
+        InvokeRepeating("ShowJumanjiwordPanel", OpenumanjiwordPanel, 0.5f);
+        Invoke("PlaysoundJumanjiword", 16.1f);
 
-       Invoke("ShowJumanjiwordPanel", OpenumanjiwordPanel);
-       Invoke("HideJumanjiwordPanel", DeleteumanjiwordPanel);
-    }
-    void Update()
-    {
 
+        Invoke("MainMenu", 24f);
     }
-    void ShowJumanjiTitlePanel()
+
+    private void ShowJumanjiTitlePanel()
     {
         JumanjiTitlePanel.gameObject.SetActive(true);
-        
     }
-    void HideJumanjiTitlePanel()
+
+    private void HideJumanjiTitlePanel()
     {
         JumanjiTitlePanel.gameObject.SetActive(false);
     }
-    void ShowJumanjiwordPanel()
+
+    private void ShowJumanjiwordPanel()
+    {
+        i++;
+        if (i >= jumangiTextList.Length)
+        {
+            JumanjiwordPanel.gameObject.SetActive(false);
+            return; 
+        }     
+        Text.text += jumangiTextList[i] + " ";   
+    }
+
+    private void PlaysoundJumanjiword()
     {
         JumanjiwordPanel.gameObject.SetActive(true);
+        Jumanjiword.Play();
     }
-    void HideJumanjiwordPanel()
+
+    private void MainMenu()
     {
-        JumanjiwordPanel.gameObject.SetActive(false);
+        Menu.gameObject.SetActive(true);
     }
 }
