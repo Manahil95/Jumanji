@@ -56797,6 +56797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point Light (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 431666957551600551, guid: e2dad4571088ce24291275a3d9579caa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7320996471397814019, guid: e2dad4571088ce24291275a3d9579caa,
         type: 3}
       propertyPath: m_LocalPosition.x
