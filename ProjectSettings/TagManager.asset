@@ -9,21 +9,15 @@ TagManager:
   - Hanger Place
   - HangerPositioPlace
   - winbottlePlace
-  - MoveRight
-  - MoveLeft
-  - Walk
   - Enemy
   - CloseButton
-  - WalkBack
   - Target
   - moveGround
   - hand
   - LeftHand
   - RightHand
-  - MazeWall
   - Joystick
   - coin
-  - Joystick1
   - Bottle
   - HangerPositionPlace
   - Bord
@@ -38,9 +32,35 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - 
   - Water
   - UI
-  - PostProcessing 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
