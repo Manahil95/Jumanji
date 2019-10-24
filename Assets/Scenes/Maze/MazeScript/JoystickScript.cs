@@ -8,6 +8,8 @@ public class JoystickScript : OVRGrabber
     float xAngle, zAngle;
     Quaternion targetRotation;
 
+    Quaternion initialRotation;
+
     public GameObject Avatar;
 
     protected override void GrabBegin()
@@ -16,6 +18,8 @@ public class JoystickScript : OVRGrabber
         xAngle = zAngle = 0;
 
         base.GrabBegin();
+
+        initialRotation = m_grabbedObj.transform.localRotation;
     }
 
     protected override void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
@@ -68,5 +72,13 @@ public class JoystickScript : OVRGrabber
                 Avatar.transform.position += Avatar.transform.TransformDirection(Vector3.left * Time.deltaTime * 0.7f);
             }
         }
+    }
+
+    protected override void GrabEnd()
+    {
+        if (m_grabbedObj != null)
+            m_grabbedObj.transform.localRotation = initialRotation;
+
+        base.GrabEnd();
     }
 }
