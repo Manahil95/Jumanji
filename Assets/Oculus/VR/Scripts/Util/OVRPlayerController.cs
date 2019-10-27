@@ -474,7 +474,8 @@ public class OVRPlayerController : MonoBehaviour
 
 			transform.rotation = Quaternion.Euler(euler);
 		}
-	}
+
+    }
 
 
 	/// <summary>
@@ -501,7 +502,8 @@ public class OVRPlayerController : MonoBehaviour
 		{
 			TransformUpdated(root);
 		}
-	}
+       
+    }
 
 	/// <summary>
 	/// Jump! Must be enabled manually.
