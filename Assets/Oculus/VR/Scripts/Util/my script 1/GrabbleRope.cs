@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class GrabbleRope : OVRGrabbable
 {
-    public HangerScript hangerSript;
     bool inPlace;
-    Transform hangerPosition;
-    public List<Transform> hangingPosition;
+    Transform parent;
 
+    public List<Transform> hangingPosition;
     public List<GameObject> BottleRing;
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
@@ -25,7 +24,8 @@ public class GrabbleRope : OVRGrabbable
         if (inPlace)
         {
             rb.isKinematic = true;
-            transform.position = hangerPosition.position;
+            transform.parent = parent;
+            transform.position = Vector3.zero;
         }
     }
 
@@ -44,7 +44,7 @@ public class GrabbleRope : OVRGrabbable
                 }
             }
 
-            hangerPosition = other.GetComponent<HangerScript>().HangingPos;
+            parent = other.GetComponent<HangerScript>().HangingPos;
             inPlace = true;
         }
     }
@@ -53,7 +53,7 @@ public class GrabbleRope : OVRGrabbable
     {
         if (other.tag == "HangerPositionPlace")
         {
-            hangerPosition = null;
+            parent = null;
             inPlace = false;
         }
     }
