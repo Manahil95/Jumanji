@@ -25,7 +25,7 @@ public class GrabbleRope : OVRGrabbable
         {
             rb.isKinematic = true;
             transform.parent = parent;
-            transform.position = Vector3.zero;
+            transform.localPosition = Vector3.zero;
         }
     }
 
