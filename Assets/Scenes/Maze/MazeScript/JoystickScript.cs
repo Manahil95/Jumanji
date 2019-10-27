@@ -19,7 +19,8 @@ public class JoystickScript : OVRGrabber
 
         base.GrabBegin();
 
-        initialRotation = m_grabbedObj.transform.localRotation;
+        if (m_grabbedObj != null)
+            initialRotation = m_grabbedObj.transform.localRotation;
     }
 
     protected override void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
