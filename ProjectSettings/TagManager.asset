@@ -35,6 +35,8 @@ TagManager:
   - WaterStartingCollider
   - WaterExetCollider
   - Rotater
+  - Joystick Green
+  - FinishPoint
   layers:
   - Default
   - TransparentFX
@@ -47,8 +49,6 @@ TagManager:
   - Player
   - Props
   - WaterRotator
-
-  - 
   - 
   - 
   - 
