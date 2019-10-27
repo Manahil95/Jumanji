@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AvatarScript : MonoBehaviour
 {
-    public GameObject moveGround;
-    public GameObject Target;
+    public GameObject Bridge;
     public GameObject AvatarPosition;
     public GameObject xWall;
     public GameObject xWallTarget;
+    public AudioSource bridgeSound;
+
     int score = 0;
 
     void Start()
     {
+        bridgeSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,15 +26,10 @@ public class AvatarScript : MonoBehaviour
     //}
     private void openDoor()
     {
-        xWall.transform.position = Vector3.MoveTowards(xWall.transform.position, xWallTarget.transform.position, 0.5f * Time.deltaTime);
+        xWall.transform.position = Vector3.MoveTowards(xWall.transform.position, xWallTarget.transform.position, 0.2f * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
     {        
-        if (collision.collider.tag=="MazeWall")
-        {
-            gameObject.transform.position = AvatarPosition.transform.position;
-        }
-
         if (collision.collider.tag == "Enemy")
         {
             gameObject.transform.position = AvatarPosition.transform.position;
@@ -42,8 +39,7 @@ public class AvatarScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
             score += 1;
-
-            if (score >= 5)
+            if (score >= 1)
             {
                 InvokeRepeating("openDoor", 0, Time.deltaTime);
             }
@@ -53,7 +49,8 @@ public class AvatarScript : MonoBehaviour
     {
         if (other.tag == "CloseButton")
         {
-            moveGround.GetComponent<Animator>().SetBool("Close", true);
+            Bridge.GetComponent<Animator>().SetBool("MoveBridge", true);
+            bridgeSound.Play();
             //InvokeRepeating("MoveGround", 0, Time.deltaTime);
         }
     }
