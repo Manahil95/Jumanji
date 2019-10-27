@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class winpointscipt : MonoBehaviour
 {
-    public GameObject box;
-    public Material Material1;
+    public GameObject UI;
     int i = 0;
+
     public void Increment()
     {
         i++;
-        if (i == 3)
+        if (i >= 4)
         {
-            box.GetComponent<MeshRenderer>().material = Material1;
+            UI.SetActive(true);
+        }
+        else
+        {
+            UI.SetActive(false);
         }
     }
 

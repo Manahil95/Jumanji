@@ -4,11 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Rotater
-  - Wall
-  - winPoint
-  - Bottle
   - Rope
   - Hanger
   - Hanger Place
@@ -25,6 +20,21 @@ TagManager:
   - hand
   - LeftHand
   - RightHand
+  - MazeWall
+  - Joystick
+  - coin
+  - Joystick1
+  - Bottle
+  - HangerPositionPlace
+  - Bord
+  - Dice 1
+  - Dice2
+  - ONOff
+  - Unloked
+  - Water
+  - WaterStartingCollider
+  - WaterExetCollider
+  - Rotater
   layers:
   - Default
   - TransparentFX
@@ -34,8 +44,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Props
+  - WaterRotator
+
   - 
   - 
   - 
