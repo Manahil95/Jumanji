@@ -6,9 +6,16 @@ public class GrabbleBottle : OVRGrabbable
 {
     bool inPlace;
     public int ID;
-    Transform hangerPosition;
+    Transform parent;
 
     GameObject rope;
+
+    Quaternion originalRotation;
+
+    private void Start()
+    {
+        originalRotation = transform.rotation;
+    }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
@@ -25,17 +32,16 @@ public class GrabbleBottle : OVRGrabbable
         {
             rb.isKinematic = true;
             rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = true;
-            print(rope.GetComponent<GrabbleRope>().BottleRing[ID]);
-            hangerPosition = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
-            transform.parent = hangerPosition;
+            parent = rope.GetComponent<GrabbleRope>().hangingPosition[ID];
+            transform.parent = parent;
             transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
         }
         else
         {
-            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = false;
-            hangerPosition = null;
+            parent = null;
             transform.parent = null;
-
+            transform.rotation = originalRotation;
             rb.isKinematic = false;
             rb.useGravity = true;
         }
@@ -47,7 +53,7 @@ public class GrabbleBottle : OVRGrabbable
         {
             rope = other.transform.parent.gameObject;
 
-            Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.3f);
+            Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, 0.1f);
 
             foreach (var item in overlappedColliders)
             {
@@ -67,6 +73,13 @@ public class GrabbleBottle : OVRGrabbable
         if (other.tag == "Rope")
         {
             inPlace = false;
+
+            rope.GetComponent<GrabbleRope>().BottleRing[ID].GetComponent<MeshRenderer>().enabled = false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
     }
 }
