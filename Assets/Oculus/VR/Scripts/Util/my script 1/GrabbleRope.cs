@@ -20,10 +20,10 @@ public class GrabbleRope : OVRGrabbable
         base.GrabEnd(linearVelocity, angularVelocity);
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
 
         if (inPlace)
         {
-            rb.isKinematic = true;
             transform.parent = parent;
             transform.localPosition = Vector3.zero;
         }
