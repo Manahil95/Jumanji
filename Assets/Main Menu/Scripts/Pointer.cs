@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float m_Distance = 10f;
+    public LineRenderer m_LineRenderer = null;
+    public LayerMask m_EverythingMask = 0;
+    public LayerMask m_InteractableMask = 0;
+
+    private void Awake()
     {
-        
+        PlayerEvent.OnControllerSource += UpdateOrigin;
+        PlayerEvent.OnTouchpadDown += ProcessTouchpadDown;
+;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        PlayerEvent.OnControllerSource -= UpdateOrigin;
+        PlayerEvent.OnTouchpadDown -= ProcessTouchpadDown;
+    }
+
+    private void UpdateOrigin(OVRInput.Controller controller ,GameObject controllerObject)
+    {
+
+    }
+
+    private void ProcessTouchpadDown() 
+    {
+
+    
     }
 }
