@@ -13,10 +13,9 @@ public class PlayerStone : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) //&& Input.GetKeyDown(KeyCode.W)) 
+        if (!isMoving && Input.GetKeyDown(KeyCode.W)) //&& OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) //&& Input.GetKeyDown(KeyCode.W)) 
         {
-            //Steps = Random.Range(1, 7);
-            Steps = DiceNumberTextScript.diceNumber1 + DiceNumberTextScript.diceNumber2;
+            Steps = DiceNumberTextScript.diceNumber1; //+ DiceNumberTextScript.diceNumber2;
             Debug.Log("Dice Rolled " + Steps);
 
             if(routPosition + Steps < currentRoute.childeNodeList.Count)

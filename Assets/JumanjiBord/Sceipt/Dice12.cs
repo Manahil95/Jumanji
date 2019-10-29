@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceScript : MonoBehaviour
+public class Dice12 : MonoBehaviour
 {
-
     static Rigidbody rb;
     public static Vector3 diceVelocity;
 
@@ -22,7 +21,6 @@ public class DiceScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             DiceNumberTextScript.diceNumber1 = 0;
-            //DiceNumberTextScript.diceNumber2 = 0;
             float dirX = Random.Range(0, 500);
             float dirY = Random.Range(0, 500);
             float dirZ = Random.Range(0, 500);
