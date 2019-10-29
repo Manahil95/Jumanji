@@ -22,54 +22,72 @@ public class DiceCheckZoneScript : MonoBehaviour
                 switch (col.gameObject.name)
                 {
                     case "Side1":
-                        DiceNumberTextScript.diceNumber1 = 6;
+                        DiceNumberTextScript.diceNumber1 = 12;
                         break;
                     case "Side2":
-                        DiceNumberTextScript.diceNumber1 = 5;
+                        DiceNumberTextScript.diceNumber1 = 11;
                         break;
                     case "Side3":
-                        DiceNumberTextScript.diceNumber1 = 4;
+                        DiceNumberTextScript.diceNumber1 = 10;
                         break;
                     case "Side4":
-                        DiceNumberTextScript.diceNumber1 = 3;
+                        DiceNumberTextScript.diceNumber1 = 9;
                         break;
                     case "Side5":
-                        DiceNumberTextScript.diceNumber1 = 2;
+                        DiceNumberTextScript.diceNumber1 = 8;
                         break;
                     case "Side6":
+                        DiceNumberTextScript.diceNumber1 = 7;
+                        break;
+                    case "Side7":
+                        DiceNumberTextScript.diceNumber1 = 6;
+                        break;
+                    case "Side8":
+                        DiceNumberTextScript.diceNumber1 = 5;
+                        break;
+                    case "Side9":
+                        DiceNumberTextScript.diceNumber1 = 4;
+                        break;
+                    case "Side10":
+                        DiceNumberTextScript.diceNumber1 = 3;
+                        break;
+                    case "Side11":
+                        DiceNumberTextScript.diceNumber1 = 2;
+                        break;
+                    case "Side12":
                         DiceNumberTextScript.diceNumber1 = 1;
                         break;
                 }
             }
-            else if(col.gameObject.tag == "Dice2")
-            {
-                switch (col.gameObject.name)
-                {
-                    case "Side1":
-                        DiceNumberTextScript.diceNumber2 = 6;
-                        break;
-                    case "Side2":
-                        DiceNumberTextScript.diceNumber2 = 5;
-                        break;
-                    case "Side3":
-                        DiceNumberTextScript.diceNumber2 = 4;
-                        break;
-                    case "Side4":
-                        DiceNumberTextScript.diceNumber2 = 3;
-                        break;
-                    case "Side5":
-                        DiceNumberTextScript.diceNumber2 = 2;
-                        break;
-                    case "Side6":
-                        DiceNumberTextScript.diceNumber2 = 1;
-                        break;
-                }
-            }
+            //else if(col.gameObject.tag == "Dice2")
+            //{
+            //    switch (col.gameObject.name)
+            //    {
+            //        case "Side1":
+            //            DiceNumberTextScript.diceNumber2 = 6;
+            //            break;
+            //        case "Side2":
+            //            DiceNumberTextScript.diceNumber2 = 5;
+            //            break;
+            //        case "Side3":
+            //            DiceNumberTextScript.diceNumber2 = 4;
+            //            break;
+            //        case "Side4":
+            //            DiceNumberTextScript.diceNumber2 = 3;
+            //            break;
+            //        case "Side5":
+            //            DiceNumberTextScript.diceNumber2 = 2;
+            //            break;
+            //        case "Side6":
+            //            DiceNumberTextScript.diceNumber2 = 1;
+            //            break;
+            //    }
+            //}
 
-            if (DiceNumberTextScript.diceNumber1 == DiceNumberTextScript.diceNumber2)
-            {
-                //playagian
-            }
+            //if (DiceNumberTextScript.diceNumber1 == DiceNumberTextScript.diceNumber2)
+            //{
+            //    //playagian
+            //}
         }
     }
 }
