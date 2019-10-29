@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/01. Final Scenes/Cave Latest.unity
     guid: a3c07bc3db0c184409b85c82204fe555
-  - enabled: 0
+  - enabled: 1
     path: Assets/01. Final Scenes/Maze Latest.unity
     guid: d67d4f04ac7428a4585469d2b75b7f21
-  - enabled: 1
+  - enabled: 0
     path: Assets/JumanjiBord/JmanjiBord.unity
     guid: 336b036fd9a01174babaacb95126a0ff
   m_configObjects: {}
