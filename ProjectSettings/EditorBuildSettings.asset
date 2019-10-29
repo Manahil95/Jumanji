@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Final Scenes/Menu Latest.unity
     guid: 4054c2274f5273f47b62529a9375a2ac
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Final Scenes/House Latest.unity
     guid: 00b4f7021b7915647b8f0d2d6e448996
   - enabled: 1
     path: Assets/01. Final Scenes/Cave Latest.unity
     guid: a3c07bc3db0c184409b85c82204fe555
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Final Scenes/Maze Latest.unity
     guid: d67d4f04ac7428a4585469d2b75b7f21
   m_configObjects: {}
