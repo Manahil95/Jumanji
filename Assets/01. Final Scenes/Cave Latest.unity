@@ -125054,6 +125054,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Return To Main Scene
       objectReference: {fileID: 0}
+    - target: {fileID: 7268731110114513123, guid: 0659039c14e3ce34abb02cf9195ccad8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7268731110114513048, guid: 0659039c14e3ce34abb02cf9195ccad8,
         type: 3}
       propertyPath: m_LocalPosition.x

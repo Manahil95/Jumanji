@@ -5,12 +5,18 @@ using UnityEngine;
 public class Dice12 : MonoBehaviour
 {
     static Rigidbody rb;
-    public static Vector3 diceVelocity;
+    public Vector3 diceVelocity;
+    public static bool thrown = false;
+    public static bool InTheZone = false;
+
+    Vector3 originalPos;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        originalPos = transform.position;
     }
 
     // Update is called once per frame
@@ -18,16 +24,34 @@ public class Dice12 : MonoBehaviour
     {
         diceVelocity = rb.velocity;
 
-        if (Input.GetKeyDown(KeyCode.A))
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    DiceNumberTextScript.diceNumber1 = 0;
+        //    float dirX = Random.Range(0, 500);
+        //    float dirY = Random.Range(0, 500);
+        //    float dirZ = Random.Range(0, 500);
+        //    transform.position = new Vector3(0, 2, 0);
+        //    transform.rotation = Quaternion.identity;
+        //    rb.AddForce(transform.up * 100);
+        //    rb.AddTorque(dirX, dirY, dirZ);
+        //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            transform.position = originalPos;
+
+        if(tag == "Dice2" && collision.gameObject.tag == "CheckZone" && thrown && Game_Play.Instance.PuzzleFinished)
         {
-            DiceNumberTextScript.diceNumber1 = 0;
-            float dirX = Random.Range(0, 500);
-            float dirY = Random.Range(0, 500);
-            float dirZ = Random.Range(0, 500);
-            transform.position = new Vector3(0, 2, 0);
-            transform.rotation = Quaternion.identity;
-            rb.AddForce(transform.up * 100);
-            rb.AddTorque(dirX, dirY, dirZ);
+            InTheZone = true;
+
+            Invoke("StopDice", 1);
         }
+    }
+
+    void StopDice()
+    {
+        rb.velocity = Vector3.zero;
     }
 }

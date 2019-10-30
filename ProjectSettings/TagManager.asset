@@ -37,6 +37,8 @@ TagManager:
   - Rotater
   - Joystick Green
   - FinishPoint
+  - Ground
+  - CheckZone
   layers:
   - Default
   - TransparentFX

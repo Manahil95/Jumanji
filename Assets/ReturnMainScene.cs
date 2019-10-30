@@ -9,7 +9,13 @@ public class ReturnMainScene : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            SceneManager.LoadScene("Forest_House");
+            Game_Play.Instance.PuzzleFinished = true;
+            Invoke("GoBackToMainScene", 2f);
         }
+    }
+
+    void GoBackToMainScene()
+    {
+        SceneManager.LoadScene("Forest_House");
     }
 }

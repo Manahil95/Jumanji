@@ -7,18 +7,15 @@ public class DiceCheckZoneScript : MonoBehaviour
 
     Vector3 diceVelocity;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        diceVelocity = DiceScript.diceVelocity;
-    }
-
     public void OnTriggerStay(Collider col)
     {
-        if (diceVelocity.x == 0f && diceVelocity.y == 0f && diceVelocity.z == 0f)
+        if (col.gameObject.tag == "Dice 1" && Dice12.InTheZone)
         {
-            if (col.gameObject.tag == "Dice 1")
+            diceVelocity = col.GetComponentInParent<Dice12>().diceVelocity;
+
+            if (diceVelocity.x <= 0.01f && diceVelocity.y <= 0.01f && diceVelocity.z <= 0.01f)
             {
+
                 switch (col.gameObject.name)
                 {
                     case "Side1":
@@ -58,36 +55,12 @@ public class DiceCheckZoneScript : MonoBehaviour
                         DiceNumberTextScript.diceNumber1 = 1;
                         break;
                 }
-            }
-            //else if(col.gameObject.tag == "Dice2")
-            //{
-            //    switch (col.gameObject.name)
-            //    {
-            //        case "Side1":
-            //            DiceNumberTextScript.diceNumber2 = 6;
-            //            break;
-            //        case "Side2":
-            //            DiceNumberTextScript.diceNumber2 = 5;
-            //            break;
-            //        case "Side3":
-            //            DiceNumberTextScript.diceNumber2 = 4;
-            //            break;
-            //        case "Side4":
-            //            DiceNumberTextScript.diceNumber2 = 3;
-            //            break;
-            //        case "Side5":
-            //            DiceNumberTextScript.diceNumber2 = 2;
-            //            break;
-            //        case "Side6":
-            //            DiceNumberTextScript.diceNumber2 = 1;
-            //            break;
-            //    }
-            //}
 
-            //if (DiceNumberTextScript.diceNumber1 == DiceNumberTextScript.diceNumber2)
-            //{
-            //    //playagian
-            //}
+                Dice12.thrown = false;
+                Dice12.InTheZone = false;
+                Game_Play.Instance.PuzzleFinished = false;
+            }
         }
+        print(DiceNumberTextScript.diceNumber1);
     }
 }

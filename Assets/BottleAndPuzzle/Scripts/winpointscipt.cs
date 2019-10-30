@@ -13,6 +13,7 @@ public class winpointscipt : MonoBehaviour
         if (i >= 4)
         {
             UI.SetActive(true);
+            Game_Play.Instance.PuzzleFinished = true;
         }
         else
         {
