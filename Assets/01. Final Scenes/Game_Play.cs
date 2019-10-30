@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game_Play : MonoBehaviour
 {
@@ -18,15 +19,22 @@ public class Game_Play : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+ 
     void Update()
     {
-        
+        if(OVRInput.Get(OVRInput.Button.Four))
+        {
+            SceneManager.LoadScene("Forest_House");
+        }
+
+        if (OVRInput.Get(OVRInput.Button.One))
+        {
+            SceneManager.LoadScene("Cave Latest");
+        }
+
+        if (OVRInput.Get(OVRInput.Button.Two))
+        {
+            SceneManager.LoadScene("Maze Latest");
+        }
     }
 }

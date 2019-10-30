@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Forest/Forest_House.unity
     guid: 3c613c88519308c4990449db923f86a5
-  - enabled: 0
-    path: Assets/01. Final Scenes/Maze Latest.unity
-    guid: d67d4f04ac7428a4585469d2b75b7f21
   - enabled: 1
     path: Assets/01. Final Scenes/Cave Latest.unity
     guid: a3c07bc3db0c184409b85c82204fe555
+  - enabled: 1
+    path: Assets/01. Final Scenes/Maze Latest.unity
+    guid: d67d4f04ac7428a4585469d2b75b7f21
   m_configObjects: {}
