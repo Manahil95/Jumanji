@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.23952821, g: 0.22056934, b: 0.18876949, a: 1}
+  m_IndirectSpecularColor: {r: 0.24015492, g: 0.22004086, b: 0.18746006, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2557,6 +2557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 494144884835798354, guid: 79c118b00b91a8b4ba8b419b66d6d24a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 494144884835798358, guid: 79c118b00b91a8b4ba8b419b66d6d24a,
         type: 3}
@@ -5770,6 +5775,11 @@ PrefabInstance:
       propertyPath: m_parentTransform
       value: 
       objectReference: {fileID: 452455543}
+    - target: {fileID: 6491307471917422586, guid: ff28f75e1d21d55449dc35672b91f679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6490679272231505714, guid: ff28f75e1d21d55449dc35672b91f679,
         type: 3}
       propertyPath: m_Layer
@@ -5781,11 +5791,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491307471917372930, guid: ff28f75e1d21d55449dc35672b91f679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6491307471917422586, guid: ff28f75e1d21d55449dc35672b91f679,
         type: 3}
       propertyPath: m_Layer
       value: 0
@@ -7154,17 +7159,17 @@ PrefabInstance:
       propertyPath: m_parentTransform
       value: 
       objectReference: {fileID: 452455543}
+    - target: {fileID: 8831845396452220308, guid: fb4bf60802dde8543b9689c8d4d090f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8833211607429447202, guid: fb4bf60802dde8543b9689c8d4d090f6,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8831845396452214072, guid: fb4bf60802dde8543b9689c8d4d090f6,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8831845396452220308, guid: fb4bf60802dde8543b9689c8d4d090f6,
         type: 3}
       propertyPath: m_Layer
       value: 0
@@ -10371,7 +10376,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
