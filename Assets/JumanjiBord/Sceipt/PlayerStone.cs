@@ -23,7 +23,7 @@ public class PlayerStone : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving && Input.GetKeyDown(KeyCode.W)) //&& OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) //&& Input.GetKeyDown(KeyCode.W)) 
+        if (!isMoving && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) //&& Input.GetKeyDown(KeyCode.W)) 
         {
             DiceNumberTextScript.diceNumber1 = 2;
 
