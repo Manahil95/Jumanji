@@ -15,6 +15,7 @@ public class PlayerStone : MonoBehaviour
     bool isMoving;
 
     public TextMeshProUGUI PuzzleText;
+    [Multiline]
     public List<string> Puzzles;
     public List<string> JumanjiScenes;
     public GameObject BottlePuzzle;
