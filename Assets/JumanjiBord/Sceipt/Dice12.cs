@@ -8,7 +8,7 @@ public class Dice12 : MonoBehaviour
     public Vector3 diceVelocity;
     public static bool thrown = false;
     public static bool InTheZone = false;
-    bool Stop = true;
+    bool Grabbed = true;
 
     public float speed = 2f;
     public Material M_material;
@@ -39,17 +39,17 @@ public class Dice12 : MonoBehaviour
         //    rb.AddForce(transform.up * 100);
         //    rb.AddTorque(dirX, dirY, dirZ);
         //}
-        if(Stop)
+        if(Grabbed)
         {
             float lerp = Mathf.PingPong(Time.time, speed) / speed;
             GetComponent<Renderer>().material.color = Color.Lerp(Color.white, Color.red, lerp);
         }
-        else
-        {
-            GetComponent<Renderer>().material = M_material;
-        }
-       
+    }
 
+    public void WhiteMat()
+    {
+        Grabbed = false;
+        GetComponent<Renderer>().material.color = Color.white;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -63,10 +63,6 @@ public class Dice12 : MonoBehaviour
 
             Invoke("StopDice", 1);
         }
-
-        if (collision.gameObject.tag == "hand")
-            Stop = false;
-
     }
 
     void StopDice()

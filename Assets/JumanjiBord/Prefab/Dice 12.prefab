@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 314627003115659768}
   - component: {fileID: 2044935063504049441}
   - component: {fileID: 2044935063504049440}
-  - component: {fileID: 2044935063504049443}
   - component: {fileID: 2044935063504049442}
   m_Layer: 0
   m_Name: Dice 12
@@ -216,24 +215,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -8597476635509232366, guid: 857cdc70446c50c45a27748440ea6d38, type: 3}
---- !u!114 &2044935063504049443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044935063504049444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints:
-  - {fileID: 2044935063504049440}
 --- !u!114 &2044935063504049442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceVelocity: {x: 0, y: 0, z: 0}
+  speed: 2
+  M_material: {fileID: 0}
 --- !u!1 &2137897554746375810
 GameObject:
   m_ObjectHideFlags: 0
