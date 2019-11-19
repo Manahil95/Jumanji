@@ -8,7 +8,10 @@ public class Dice12 : MonoBehaviour
     public Vector3 diceVelocity;
     public static bool thrown = false;
     public static bool InTheZone = false;
+    bool Stop = true;
 
+    public float speed = 2f;
+    public Material M_material;
     Vector3 originalPos;
 
     // Use this for initialization
@@ -17,6 +20,7 @@ public class Dice12 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         originalPos = transform.position;
+
     }
 
     // Update is called once per frame
@@ -35,6 +39,17 @@ public class Dice12 : MonoBehaviour
         //    rb.AddForce(transform.up * 100);
         //    rb.AddTorque(dirX, dirY, dirZ);
         //}
+        if(Stop)
+        {
+            float lerp = Mathf.PingPong(Time.time, speed) / speed;
+            GetComponent<Renderer>().material.color = Color.Lerp(Color.white, Color.red, lerp);
+        }
+        else
+        {
+            GetComponent<Renderer>().material = M_material;
+        }
+       
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,6 +63,10 @@ public class Dice12 : MonoBehaviour
 
             Invoke("StopDice", 1);
         }
+
+        if (collision.gameObject.tag == "hand")
+            Stop = false;
+
     }
 
     void StopDice()
