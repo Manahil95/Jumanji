@@ -11,7 +11,6 @@ public class Dice12 : MonoBehaviour
     bool Grabbed = true;
 
     public float speed = 2f;
-    public Material M_material;
     Vector3 originalPos;
 
     // Use this for initialization
@@ -39,6 +38,7 @@ public class Dice12 : MonoBehaviour
         //    rb.AddForce(transform.up * 100);
         //    rb.AddTorque(dirX, dirY, dirZ);
         //}
+
         if(Grabbed)
         {
             float lerp = Mathf.PingPong(Time.time, speed) / speed;
