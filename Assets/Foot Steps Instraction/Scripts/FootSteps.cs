@@ -14,18 +14,35 @@ public class FootSteps : MonoBehaviour
     public GameObject Step7;
     public GameObject Step8;
     public GameObject Step9;
+    public GameObject Step10;
+    public GameObject Step11;
+    public GameObject Step12;
+    public GameObject Step13;
+    public GameObject Step14;
+    public GameObject Step15;
+    public GameObject Step16;
+    public GameObject Step17;
+     
     void Start()
     {
         // Invoke("SpawnObject", 2);
-        Invoke("S1", 2);
-        Invoke("S2", 4);
-        Invoke("S3", 8);
-        Invoke("S4", 10);
-        Invoke("S5", 12);
-        Invoke("S6", 14);
-        Invoke("S7", 16);
-        Invoke("S8", 18);
-        Invoke("S9", 20);
+        Invoke("S1", 0.5f);
+        Invoke("S2", 1);
+        Invoke("S3", 1.5f);
+        Invoke("S4", 2);
+        Invoke("S5", 2.5f);
+        Invoke("S6", 3);
+        Invoke("S7", 3.5f);
+        Invoke("S8", 4);
+        Invoke("S9", 4.5f);
+        Invoke("S10", 5);
+        Invoke("S11", 5.5f);
+        Invoke("S12", 6);
+        Invoke("S13", 6.5f);
+        Invoke("S14", 7);
+        Invoke("S15", 7.5f);
+        Invoke("S16", 8);
+        Invoke("S17", 8.5f);
     }
 
 
@@ -35,7 +52,7 @@ private void  SpawnObject()//IEnumerator
         {
             Steps[i].SetActive(true);
             //yield return new WaitForSeconds(2);
-           
+            //yield return new WaitForSeconds(0.1f);
         }
     }
     private void S1()
@@ -73,5 +90,37 @@ private void  SpawnObject()//IEnumerator
     private void S9()
     {
         Step9.SetActive(true);
+    }
+    private void S10()
+    {
+        Step10.SetActive(true);
+    }
+    private void S11()
+    {
+        Step11.SetActive(true);
+    }
+    private void S12()
+    {
+        Step12.SetActive(true);
+    }
+    private void S13()
+    {
+        Step13.SetActive(true);
+    }
+    private void S14()
+    {
+        Step14.SetActive(true);
+    }
+    private void S15()
+    {
+        Step15.SetActive(true);
+    }
+    private void S16()
+    {
+        Step16.SetActive(true);
+    }
+    private void S17()
+    {
+        Step17.SetActive(true);
     }
 }

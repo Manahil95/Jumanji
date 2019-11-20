@@ -19,6 +19,9 @@ public class PlayerStone : MonoBehaviour
     public List<string> Puzzles;
     public List<string> JumanjiScenes;
     public GameObject BottlePuzzle;
+    public GameObject FootSteps;
+    public GameObject UI;
+
 
     private void Start()
     {
@@ -82,7 +85,16 @@ public class PlayerStone : MonoBehaviour
         if (randNumber != 2)
             Invoke("ScenesTransition", 5f);
         else if (randNumber == 2)
+        {
             BottlePuzzle.SetActive(true);
+            FootSteps.SetActive(false);
+            Invoke("Hide", 20f);
+        }
+            
+    }
+    private void Hide()
+    {
+        UI.SetActive(false);
     }
 
     bool MoveToNextNode(Vector3 goal)
