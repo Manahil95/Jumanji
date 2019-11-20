@@ -9,6 +9,9 @@ public class GrabbleDice : OVRGrabbable
         base.GrabBegin(hand, grabPoint);
 
         if (gameObject.tag == "Dice2")
+        {
             GetComponent<Dice12>().WhiteMat();
+        }
+            
     }
 }
