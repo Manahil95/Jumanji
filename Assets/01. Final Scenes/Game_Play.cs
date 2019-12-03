@@ -13,6 +13,8 @@ public class Game_Play : MonoBehaviour
 
     public int previousPuzzle = -1;
 
+    public int CurrentSene { get; internal set; } = -1;
+
     private void Awake()
     {
         if (Instance == null)

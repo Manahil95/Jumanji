@@ -10,7 +10,7 @@ public class PlayerStone : MonoBehaviour
     public int Steps = 0;
     public float Speed;
     int routPosition;
-    int randNumber;
+    //int randNumber;
 
     bool isMoving;
 
@@ -70,21 +70,22 @@ public class PlayerStone : MonoBehaviour
         isMoving = false;
         DiceNumberTextScript.diceNumber1 = 0;
         Game_Play.Instance.PlayerAvatarIndex = routPosition;
-        //Game_Play.Instance.CurrentSene++;
-        //if(Game_Play.Instance.CurrentSene >= 3)
-        //    Game_Play.Instance.CurrentSene = 0;
 
-        do
-        {
-            randNumber = Random.Range(0, 3);
-        } while (randNumber == Game_Play.Instance.previousPuzzle);
+        Game_Play.Instance.CurrentSene++;
+        if (Game_Play.Instance.CurrentSene >= 3)
+            Game_Play.Instance.CurrentSene = 0;
 
-        Game_Play.Instance.previousPuzzle = randNumber;
-        PuzzleText.text = Puzzles[randNumber];
+        //do
+        //{
+        //    randNumber = Random.Range(0, 3);
+        //} while (randNumber == Game_Play.Instance.previousPuzzle);
 
-        if (randNumber != 2)
+        //Game_Play.Instance.previousPuzzle = randNumber;
+        PuzzleText.text = Puzzles[Game_Play.Instance.CurrentSene];
+
+        if (Game_Play.Instance.CurrentSene != 2)
             Invoke("ScenesTransition", 5f);
-        else if (randNumber == 2)
+        else if (Game_Play.Instance.CurrentSene == 2)
         {
             BottlePuzzle.SetActive(true);
             FootSteps.SetActive(false);
@@ -104,6 +105,6 @@ public class PlayerStone : MonoBehaviour
 
     void ScenesTransition()
     {
-        SceneManager.LoadScene(JumanjiScenes[randNumber]);
+        SceneManager.LoadScene(JumanjiScenes[Game_Play.Instance.CurrentSene]);
     }
 }
